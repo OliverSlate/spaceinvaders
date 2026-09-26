@@ -16,33 +16,38 @@ using SpaceInvaders.Classes;
 
 namespace SpaceInvaders
 {
-    public enum State
-    {
-        Menu,
-        Wave,
-        BossAlert,
-        BossWave,
-        Loss
-    }
+   
     
     public partial class MainWindow : Window
     {
-        State globalState = State.Menu;
-        SoundHandler soundHandler;
-        GameState gameState;
+        private readonly GameStateManager gameState = new();
+        private readonly AudioEngine audio = new();
+        private SoundHandler soundHandler;
         public MainWindow()
         {
             InitializeComponent();
-            gameState = new GameState();
-            soundHandler = SoundHandler.GetInstance();
+            soundHandler = new SoundHandler(gameState, audio);
         }
         public void HandleStateChange(State state)
-        {
-            globalState = state;
+        { 
+           
         }
-
+    
+       
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
+            audio.PlaySfx("Resources/Audio/hover.wav");
+        }
+
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+        
+        }
+        private void OptionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            OptionsGrid.Visibility = OptionsGrid.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
+        }
+        private void QuitButton_Click(object sender, RoutedEventArgs e) { 
         }
     }
 }

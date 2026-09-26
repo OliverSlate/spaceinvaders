@@ -45,3 +45,7 @@ C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\System.Runtime
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\System.Security.AccessControl.xml
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\obj\Debug\SpaceInv.DBB6BC76.Up2Date
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\Resources\Audio\explosion.wav
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\Resources\Audio\hover.wav
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\Resources\Audio\pickup.wav
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\Resources\Audio\shoot.wav

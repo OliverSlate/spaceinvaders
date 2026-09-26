@@ -10,39 +10,30 @@ using NAudio.Wave;
 
 namespace SpaceInvaders.Classes
 {
-    
+
     internal class SoundHandler
     {
-        private State state;
-        static SoundHandler _instance;
-        private AudioFileReader _audioFileReader;
-        private WaveOutEvent _event;
-        private SoundHandler() {}
-        public static SoundHandler GetInstance()
-        {
-            if (_instance == null) { 
-                _instance = new SoundHandler();
-            }
-            return _instance;
-        }
-        public void SetState(State state)
-        {
-            this.state = state;
-        }
-        public void Play(string path)
-        {
-            if (_audioFileReader == null) { _audioFileReader = new AudioFileReader(path); }
-            if (_event == null) { _event = new WaveOutEvent(); }
-            _event.Init(_audioFileReader);
-            _event.Play();
-        }
-        public void PlaySFX(string path)
-        {
+        private readonly AudioEngine audio;
 
-        }
-        public void ChangeBackgroundState(State newState)
+        public SoundHandler(GameStateManager gameState, AudioEngine audio)
         {
+            this.audio = audio;
+            gameState.StateChanged += OnStateChanged;
+            OnStateChanged(gameState.CurrentState);
+        }
 
+        private void OnStateChanged(State newState)
+        {
+            string track = newState switch
+            {
+                State.Menu => "Resources/Audio/mainmenu.wav",
+                State.Wave => "Resources/Audio/game.wav",
+                State.BossAlert => "Resources/Audio/bossalert.wav",
+                State.BossWave => "Resources/Audio/boss.wav",
+                State.Loss => "Resources/Audio/lose.wav",
+                _ => throw new ArgumentOutOfRangeException()
+            };
+            audio.PlayMusic(track);
         }
     }
 }

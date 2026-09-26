@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "XLXILegCHH8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\SpaceInvaders.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\oliwi\\.nuget\\packages\\naudio\\3.1.0\\naudio.3.1.0.nupkg.sha512",
+    "C:\\Users\\oliwi\\.nuget\\packages\\naudio.asio\\3.1.0\\naudio.asio.3.1.0.nupkg.sha512",
+    "C:\\Users\\oliwi\\.nuget\\packages\\naudio.core\\3.1.0\\naudio.core.3.1.0.nupkg.sha512",
+    "C:\\Users\\oliwi\\.nuget\\packages\\naudio.dmo\\3.1.0\\naudio.dmo.3.1.0.nupkg.sha512",
+    "C:\\Users\\oliwi\\.nuget\\packages\\naudio.midi\\3.1.0\\naudio.midi.3.1.0.nupkg.sha512",
+    "C:\\Users\\oliwi\\.nuget\\packages\\naudio.wasapi\\3.1.0\\naudio.wasapi.3.1.0.nupkg.sha512",
+    "C:\\Users\\oliwi\\.nuget\\packages\\naudio.winforms\\3.1.0\\naudio.winforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\oliwi\\.nuget\\packages\\naudio.winmm\\3.1.0\\naudio.winmm.3.1.0.nupkg.sha512",
+    "C:\\Users\\oliwi\\.nuget\\packages\\system.numerics.tensors\\9.0.0\\system.numerics.tensors.9.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

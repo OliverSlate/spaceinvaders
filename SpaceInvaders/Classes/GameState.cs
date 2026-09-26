@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace SpaceInvaders.Classes
 {
-    internal class GameState
+    public enum State
     {
+        Menu,
+        Wave,
+        BossAlert,
+        BossWave,
+        Loss
     }
 }
