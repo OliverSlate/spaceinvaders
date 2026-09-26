@@ -39,3 +39,9 @@ C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\obj\Debug\net10.0-window
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\obj\Debug\net10.0-windows\ref\SpaceInvaders.dll
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Audio\click.wav
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Audio\game.wav
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\heartempty.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\heartfull.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\player.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\shieldempty.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\shieldfull.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\specialattack.png

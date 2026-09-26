@@ -14,6 +14,11 @@ namespace SpaceInvaders.Classes
         private readonly WaveOut outputDevice;
         private FadeInOutSampleProvider currentMusic;
         private readonly Dictionary<string, CachedSound> sfxCache = new();
+        public float Volume
+        {
+            get => outputDevice.Volume;
+            set => outputDevice.Volume = Math.Clamp(value, 0f, 1f);
+        }
 
         public AudioEngine()
         {

@@ -22,4 +22,13 @@ namespace SpaceInvaders.Classes
         Pickup,
         Shoot
     }
+    public struct Position
+    {
+        public float x, y;
+    }
+    public enum Direction
+    {
+        Up = -1,
+        Down = 1
+    }
 }

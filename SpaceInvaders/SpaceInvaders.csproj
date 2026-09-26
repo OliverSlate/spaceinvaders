@@ -19,6 +19,12 @@
     <None Remove="Resources\Audio\click.wav" />
     <None Remove="Resources\Audio\game.wav" />
     <None Remove="Resources\Audio\mainmenu.wav" />
+    <None Remove="Resources\Images\heartempty.png" />
+    <None Remove="Resources\Images\heartfull.png" />
+    <None Remove="Resources\Images\player.png" />
+    <None Remove="Resources\Images\shieldempty.png" />
+    <None Remove="Resources\Images\shieldfull.png" />
+    <None Remove="Resources\Images\specialattack.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +47,30 @@
     </Content>
 
     <Content Include="Resources\Audio\game.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\heartempty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\heartfull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\player.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\shieldempty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\shieldfull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\specialattack.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 

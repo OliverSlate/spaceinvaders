@@ -20,7 +20,7 @@ namespace SpaceInvaders
     
     public partial class MainWindow : Window
     {
-        private readonly Dictionary<SFX, string> sfx = new Dictionary<SFX, string>() {
+        private readonly Dictionary<SFX, string> sfx = new() {
             {SFX.Pickup, "Resources/Audio/pickup.wav" },
             {SFX.Explosion, "Resources/Audio/explosion.wav" },
             {SFX.Shoot, "Resources/Audio/shoot.wav" },
@@ -30,10 +30,14 @@ namespace SpaceInvaders
         private readonly GameStateManager gameState = new();
         private readonly AudioEngine audio = new();
         private SoundHandler soundHandler;
+        public int targetFrameRate = 60;
         public MainWindow()
         {
             InitializeComponent();
             soundHandler = new SoundHandler(gameState, audio);
+
+            VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
+            VolumeSlider_ValueChanged(VolumeSlider, null);
         }
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -54,6 +58,12 @@ namespace SpaceInvaders
         }
         private void QuitButton_Click(object sender, RoutedEventArgs e) { 
               this.Close();
+        }
+
+        private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            audio.Volume = (float)VolumeSlider.Value;
+            VolumeText.Text = (audio.Volume * 100).ToString("0") + "%";
         }
     }
 }
