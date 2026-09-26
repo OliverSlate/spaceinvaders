@@ -14,4 +14,12 @@ namespace SpaceInvaders.Classes
         BossWave,
         Loss
     }
+    public enum SFX
+    {
+        Click,
+        Explosion,
+        Hover,
+        Pickup,
+        Shoot
+    }
 }

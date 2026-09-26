@@ -23,7 +23,7 @@ namespace SpaceInvaders.Classes
             outputDevice.Init(mixer);
             outputDevice.Play();
         }
-        public void PlayMusic(string relativePath, double fadeSeconds = 1.5)
+        public void PlayMusic(string relativePath, double fadeSeconds = 2.5)
         {
             var looped = new LoopStream(new AudioFileReader(ResolveAudioPath(relativePath)));
             var incoming = new FadeInOutSampleProvider(looped.ToSampleProvider(), true);

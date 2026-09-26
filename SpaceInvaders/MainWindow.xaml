@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpaceInvaders"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1600" Background="#FF051427" FontFamily="Resources/Fonts/#Pixel Digivolve">
+        Title="MainWindow" Height="900" MinHeight="900" Width="1600" MinWidth="1600" Background="#FF051427" FontFamily="Resources/Fonts/#Pixel Digivolve">
     <Window.Resources>
         <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#F7000000" />
@@ -36,7 +36,9 @@
             </Grid.Effect>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -45,14 +47,14 @@
                 <RowDefinition Height="6*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="1" Grid.Row="1" FontSize="96" Foreground="#FFF8BC04">Space Invaders</TextBlock>
-            <Button Grid.Column="1" Grid.Row="2" Width="400" Height="130" VerticalAlignment="Top"
+            <TextBlock Grid.Column="2" Grid.Row="1" FontSize="96" Foreground="#FFF8BC04">Space Invaders</TextBlock>
+            <Button Grid.Column="2" Grid.Row="2" Width="400" Height="130" VerticalAlignment="Top"
                     FontSize="48" Content="PLAY" Style="{StaticResource MenuButtonStyle}" MouseEnter="Button_MouseEnter" Click="PlayButton_Click"/>
-            <Button Grid.Column="1" Grid.Row="2" Width="400" Height="130" VerticalAlignment="Center"
+            <Button Grid.Column="2" Grid.Row="2" Width="400" Height="130" VerticalAlignment="Center"
                     FontSize="48" Content="OPTIONS" Style="{StaticResource MenuButtonStyle}" MouseEnter="Button_MouseEnter" Click="OptionsButton_Click"/>
-            <Button Grid.Column="1" Grid.Row="2" Width="400" Height="130" VerticalAlignment="Bottom"
+            <Button Grid.Column="2" Grid.Row="2" Width="400" Height="130" VerticalAlignment="Bottom"
                     FontSize="48" Content="QUIT" Style="{StaticResource MenuButtonStyle}" MouseEnter="Button_MouseEnter" Click="QuitButton_Click"/>
-            <Grid x:Name="OptionsGrid" Grid.Row="2" Grid.Column="2" Background="#f7000000" Visibility="Hidden"></Grid>
+            <Grid x:Name="OptionsGrid" Grid.Row="2" Grid.Column="3" Background="#f7000000" Visibility="Hidden"></Grid>
         </Grid>
         <Grid x:Name="GameGrid" Visibility="Hidden" />
         <Grid x:Name="LoseGrid" Visibility="Hidden" />

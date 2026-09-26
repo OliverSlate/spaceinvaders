@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/click.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/game.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/explosion.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/hover.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/mainmenu.wav")]

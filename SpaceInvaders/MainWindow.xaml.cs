@@ -16,10 +16,17 @@ using SpaceInvaders.Classes;
 
 namespace SpaceInvaders
 {
-   
+  
     
     public partial class MainWindow : Window
     {
+        private readonly Dictionary<SFX, string> sfx = new Dictionary<SFX, string>() {
+            {SFX.Pickup, "Resources/Audio/pickup.wav" },
+            {SFX.Explosion, "Resources/Audio/explosion.wav" },
+            {SFX.Shoot, "Resources/Audio/shoot.wav" },
+            {SFX.Hover, "Resources/Audio/hover.wav" },
+            {SFX.Click, "Resources/Audio/click.wav" }
+        };
         private readonly GameStateManager gameState = new();
         private readonly AudioEngine audio = new();
         private SoundHandler soundHandler;
@@ -28,26 +35,25 @@ namespace SpaceInvaders
             InitializeComponent();
             soundHandler = new SoundHandler(gameState, audio);
         }
-        public void HandleStateChange(State state)
-        { 
-           
-        }
-    
-       
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
-            audio.PlaySfx("Resources/Audio/hover.wav");
+            audio.PlaySfx(sfx[SFX.Hover]);
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-        
+            audio.PlaySfx(sfx[SFX.Click]);
+            MenuGrid.Visibility = Visibility.Hidden;
+            GameGrid.Visibility = Visibility.Visible;
+            gameState.SetState(State.Wave);
         }
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {
+            audio.PlaySfx(sfx[SFX.Click]);
             OptionsGrid.Visibility = OptionsGrid.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
         }
         private void QuitButton_Click(object sender, RoutedEventArgs e) { 
+              this.Close();
         }
     }
 }

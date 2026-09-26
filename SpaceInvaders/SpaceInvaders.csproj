@@ -16,6 +16,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Audio\click.wav" />
+    <None Remove="Resources\Audio\game.wav" />
     <None Remove="Resources\Audio\mainmenu.wav" />
   </ItemGroup>
 
@@ -33,6 +35,14 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+
+    <Content Include="Resources\Audio\click.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Audio\game.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
 
     <Resource Include="Resources\Fonts\Pixel Digivolve.otf" />
 
