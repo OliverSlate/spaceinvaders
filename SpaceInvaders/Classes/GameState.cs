@@ -12,6 +12,7 @@ namespace SpaceInvaders.Classes
         Wave,
         BossAlert,
         BossWave,
+        Win,
         Loss
     }
     public enum SFX
