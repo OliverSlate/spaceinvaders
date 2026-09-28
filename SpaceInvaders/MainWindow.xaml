@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpaceInvaders"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" MinHeight="900" Width="1600" MinWidth="1600" Background="#FF051427" FontFamily="Resources/Fonts/#Pixel Digivolve">
+        Title="Space Invaders" Height="900" MinHeight="900" Width="1600" MinWidth="1600" Background="#FF051427" FontFamily="Resources/Fonts/#Pixel Digivolve">
     <Window.Resources>
         <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#F7000000" />
@@ -30,7 +30,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid x:Name="MenuGrid">
+        <Grid x:Name="MenuGrid" Visibility="Hidden">
             <Grid.Effect>
                 <DropShadowEffect />
             </Grid.Effect>
@@ -65,9 +65,38 @@
                 <TextBlock Grid.Row="1" Text="VOLUME" Foreground="#FFF8BC04" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
                 <Slider x:Name="VolumeSlider" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Maximum="1" SmallChange="0.01" Value="1" TickFrequency="0.01" LargeChange="0.1"></Slider>
                 <TextBlock x:Name="VolumeText" Grid.Row="1" Text="100%" Foreground="#FFF8BC04" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,16"/>
+                <TextBlock Grid.Row="2" Text="DEBUG" Foreground="#FFF8BC04" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
             </Grid>
         </Grid>
-        <Grid x:Name="GameGrid" Visibility="Hidden" />
+        <Grid x:Name="GameGrid" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="WAVE 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="SCORE 0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,18"></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="24" Text="x1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6"></TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="HI 0" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+            <Border BorderBrush="#FF1D1D1D" BorderThickness="2" Grid.Column="1" Grid.Row="1">
+                <Canvas x:Name="GameCanvas"  Background="#000" Focusable="True"></Canvas>
+            </Border>
+            <Grid x:Name="PowerUpGrid" Grid.Column="2" Grid.Row="1" Background="#000" VerticalAlignment="Top" HorizontalAlignment="Center" Width="180" Height="400">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock  Grid.Row="0" Foreground="#FFF8BC04" FontSize="24" Text="POWERUPS" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+            <Canvas x:Name="HealthCanvas" Grid.Column="1" Grid.Row="2" Background="#000"></Canvas>
+        </Grid>
         <Grid x:Name="LoseGrid" Visibility="Hidden" />
     </Grid>
 </Window>
