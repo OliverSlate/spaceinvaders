@@ -25,11 +25,17 @@ namespace SpaceInvaders.Classes
     }
     public struct Position
     {
-        public float x, y;
+        public double x, y;
     }
     public enum Direction
     {
         Up = -1,
-        Down = 1
+        Down = 1,
+        Right = 1,
+        Left = -1
+    }
+    public struct Movement
+    {
+        public float x, y;
     }
 }

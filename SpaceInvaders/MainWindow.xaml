@@ -30,7 +30,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid x:Name="MenuGrid" Visibility="Hidden">
+        <Grid x:Name="MenuGrid" Visibility="Visible">
             <Grid.Effect>
                 <DropShadowEffect />
             </Grid.Effect>
@@ -68,7 +68,7 @@
                 <TextBlock Grid.Row="2" Text="DEBUG" Foreground="#FFF8BC04" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
             </Grid>
         </Grid>
-        <Grid x:Name="GameGrid" Visibility="Visible">
+        <Grid x:Name="GameGrid" Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -84,7 +84,7 @@
             <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="24" Text="x1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6"></TextBlock>
             <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="HI 0" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
             <Border BorderBrush="#FF1D1D1D" BorderThickness="2" Grid.Column="1" Grid.Row="1">
-                <Canvas x:Name="GameCanvas"  Background="#000" Focusable="True"></Canvas>
+                <Canvas x:Name="GameCanvas"  Background="#000"></Canvas>
             </Border>
             <Grid x:Name="PowerUpGrid" Grid.Column="2" Grid.Row="1" Background="#000" VerticalAlignment="Top" HorizontalAlignment="Center" Width="180" Height="400">
                 <Grid.RowDefinitions>
