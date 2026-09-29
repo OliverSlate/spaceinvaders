@@ -9,12 +9,14 @@ namespace SpaceInvaders.Classes
     internal class Player
     {
         public Position position;
+        public Velocity velocity;
         public ImageBrush skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", uriKind: UriKind.Relative)));
         public int health = 3;
         public const int maxHealth = 5;
         public int shield = 0;
         public const int maxShield = 5;
-        public float speed = 10f;
+        public float speed = 300f;
+        public float acceleration = 10f;
         public void Shoot()
         {
 

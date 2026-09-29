@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Diagnostics;
 using SpaceInvaders.Classes;
 
 namespace SpaceInvaders
@@ -35,8 +36,7 @@ namespace SpaceInvaders
         private Rectangle playerRect;
         private readonly AudioEngine audio = new();
         private SoundHandler soundHandler;
-        public int targetFrameRate = 60;
-        public DispatcherTimer gameTimer = new DispatcherTimer();
+        private TimeSpan lastRender = TimeSpan.Zero;
         public HashSet<Key> _keysDown = new();
         public MainWindow()
         {
@@ -98,36 +98,49 @@ namespace SpaceInvaders
             gameCanvas.Children.Add(playerRect);
 
             //Game loop setup
-            gameTimer.Tick += GameLoop;
-            gameTimer.Interval = TimeSpan.FromMilliseconds(1000 / targetFrameRate);
-            gameTimer.Start();
+            lastRender = TimeSpan.Zero;
+            CompositionTarget.Rendering += GameLoop;
         }
         private void GameLoop(object sender, EventArgs e) 
         {
-            HandleMovement();
+            var args = (RenderingEventArgs)e;
+            if (args.RenderingTime == lastRender) return; //safeguard so you dont get 2 frames at the same time
+
+            double deltaTime = lastRender == TimeSpan.Zero ? 0 : (args.RenderingTime - lastRender).TotalSeconds;
+            lastRender = args.RenderingTime;
+            deltaTime = Math.Min(deltaTime, 0.05); //get a minimum for the same reason basically
+            HandleMovement(deltaTime);
             Render();
+            //update i fixed the choppy ass look
         }
-        private void HandleMovement()
+        private void HandleMovement(double dT)
         {
             //get movement vector
             Movement movement = new Movement();
-            if(_keysDown.Contains(Key.W) && player.position.y > 0)
-                movement.y += (int)Direction.Up;
-            if (_keysDown.Contains(Key.S) && player.position.y < gameCanvas.ActualHeight - 51)
-                movement.y += (int)Direction.Down;
-            if (_keysDown.Contains(Key.A) && player.position.x > 0)
-                movement.x += (int)Direction.Left;
-            if (_keysDown.Contains(Key.D) && player.position.x < gameCanvas.ActualWidth - 51)
-                movement.x += (int)Direction.Right;
+            if (_keysDown.Contains(Key.W)) movement.y += (int)Direction.Up;
+            if (_keysDown.Contains(Key.S)) movement.y += (int)Direction.Down;
+            if (_keysDown.Contains(Key.A)) movement.x += (int)Direction.Left;
+            if (_keysDown.Contains(Key.D)) movement.x += (int)Direction.Right;
 
-            player.position.x += movement.x * player.speed;
-            player.position.y += movement.y * player.speed;
+            //normalize
+            double len = Math.Sqrt(movement.x * movement.x + movement.y * movement.y);
+            double targetVelX = len > 0 ? (movement.x / len) * player.speed : 0;
+            double targetVelY = len > 0 ? (movement.y / len) * player.speed : 0;
+
+            //lerp (we are in space)
+            double t = Math.Clamp(player.acceleration * dT, 0, 1);
+            player.velocity.x += (targetVelX - player.velocity.x) * t;
+            player.velocity.y += (targetVelY - player.velocity.y) * t;
+
+            //move that fat ass 
+            player.position.x = Math.Clamp(player.position.x + player.velocity.x * dT, 0, gameCanvas.ActualWidth - 51);
+            player.position.y = Math.Clamp(player.position.y + player.velocity.y * dT, 0, gameCanvas.ActualHeight - 51);
         }
         private void Render()
         {
             Canvas.SetLeft(playerRect, player.position.x);
             Canvas.SetTop(playerRect, player.position.y);
-            gameCanvas.UpdateLayout();
+            //gameCanvas.UpdateLayout();
         }
         private void OnKeyDown(object sender, KeyEventArgs e)
         {

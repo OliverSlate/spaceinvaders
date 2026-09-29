@@ -36,6 +36,10 @@ namespace SpaceInvaders.Classes
     }
     public struct Movement
     {
-        public float x, y;
+        public double x, y;
+    }
+    public struct Velocity
+    {
+        public double x, y;
     }
 }

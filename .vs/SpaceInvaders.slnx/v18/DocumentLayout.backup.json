@@ -44,7 +44,7 @@
               "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\GameState.cs",
               "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\GameState.cs",
               "RelativeToolTip": "SpaceInvaders\\Classes\\GameState.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAIwBsAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAA7wCoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-26T21:08:55.992Z",
               "EditorCaption": ""
@@ -57,7 +57,7 @@
               "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\Player.cs",
               "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Player.cs",
               "RelativeToolTip": "SpaceInvaders\\Classes\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-26T21:07:59.666Z",
               "EditorCaption": ""
@@ -70,7 +70,7 @@
               "RelativeDocumentMoniker": "SpaceInvaders\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\MainWindow.xaml.cs",
               "RelativeToolTip": "SpaceInvaders\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAADwv2wAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAgwI0AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-26T07:52:04.778Z",
               "EditorCaption": ""
@@ -84,8 +84,7 @@
               "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\MainWindow.xaml",
               "RelativeToolTip": "SpaceInvaders\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-09-25T23:12:56.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-25T23:12:56.967Z"
             }
           ]
         },
