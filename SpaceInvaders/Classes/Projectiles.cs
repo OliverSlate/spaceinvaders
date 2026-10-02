@@ -40,4 +40,18 @@ namespace SpaceInvaders.Classes
             this.position.y += change;
         }
     }
+    internal class SpecialProjectile : Projectile
+    {
+        public SpecialProjectile(Position position, Direction direction = Direction.Down) : base()
+        {
+            this.position = position;
+            this.speed = 0;
+            this.direction = direction;
+        }
+        public override void Move()
+        {
+            float change = this.speed * (int)this.direction;
+            this.position.y += change;
+        }
+    }
 }

@@ -19,9 +19,11 @@
     <None Remove="Resources\Audio\click.wav" />
     <None Remove="Resources\Audio\game.wav" />
     <None Remove="Resources\Audio\mainmenu.wav" />
+    <None Remove="Resources\Images\enemyprojectile.png" />
     <None Remove="Resources\Images\heartempty.png" />
     <None Remove="Resources\Images\heartfull.png" />
     <None Remove="Resources\Images\player.png" />
+    <None Remove="Resources\Images\playerprojectile.png" />
     <None Remove="Resources\Images\shieldempty.png" />
     <None Remove="Resources\Images\shieldfull.png" />
     <None Remove="Resources\Images\specialattack.png" />
@@ -75,6 +77,14 @@
     </Content>
 
     <Resource Include="Resources\Fonts\Pixel Digivolve.otf" />
+
+    <Content Include="Resources\Images\enemyprojectile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\playerprojectile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
 
     <Content Include="Resources\Audio\explosion.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

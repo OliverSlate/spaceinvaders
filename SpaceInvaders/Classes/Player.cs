@@ -15,11 +15,35 @@ namespace SpaceInvaders.Classes
         public const int maxHealth = 5;
         public int shield = 0;
         public const int maxShield = 5;
-        public float speed = 300f;
+        public float speed = 400f;
         public float acceleration = 10f;
+        
         public void Shoot()
         {
 
+        }
+        public void TakeDamage(int dmg)
+        {
+            while(dmg != 0)
+            {
+                if (shield > 0) shield--;
+                else health--;
+                if (health == 0) Die();
+                dmg--;
+            }
+        }
+        public void Die() { 
+        
+        }
+        public void Heal()
+        {
+            if (health >= maxHealth) return;
+            health++;
+        }
+        public void AddShield()
+        {
+            if (shield >= maxShield) return;
+            shield++;
         }
     }
 }

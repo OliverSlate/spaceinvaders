@@ -109,11 +109,11 @@ namespace SpaceInvaders
             double deltaTime = lastRender == TimeSpan.Zero ? 0 : (args.RenderingTime - lastRender).TotalSeconds;
             lastRender = args.RenderingTime;
             deltaTime = Math.Min(deltaTime, 0.05); //get a minimum for the same reason basically
-            HandleMovement(deltaTime);
+            HandleInput(deltaTime);
             Render();
             //update i fixed the choppy ass look
         }
-        private void HandleMovement(double dT)
+        private void HandleInput(double dT)
         {
             //get movement vector
             Movement movement = new Movement();

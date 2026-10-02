@@ -16,6 +16,8 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/shieldempty.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/shieldfull.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/specialattack.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/enemyprojectile.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/playerprojectile.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/explosion.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/hover.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/mainmenu.wav")]
