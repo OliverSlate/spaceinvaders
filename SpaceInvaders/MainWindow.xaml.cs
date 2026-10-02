@@ -29,15 +29,23 @@ namespace SpaceInvaders
             {SFX.Hover, "Resources/Audio/hover.wav" },
             {SFX.Click, "Resources/Audio/click.wav" }
         };
-        private readonly GameStateManager gameState = new();
+        public HashSet<Key> _keysDown = new();
+        private TimeSpan lastRender = TimeSpan.Zero;
+        //UI
         private Canvas gameCanvas;
+        private Rectangle playerRect;
+        //SYSTEMS
+        private readonly GameStateManager gameState = new();
         private WaveManager waveManager;
         private Player player;
-        private Rectangle playerRect;
         private readonly AudioEngine audio = new();
         private SoundHandler soundHandler;
-        private TimeSpan lastRender = TimeSpan.Zero;
-        public HashSet<Key> _keysDown = new();
+        private CanvasRenderer canvasRenderer;
+        private CollisionSystem collisionSystem;
+        private GameSession gameSession;
+        private GameWorld world;
+        private UIController controller;
+ 
         public MainWindow()
         {
             InitializeComponent();
@@ -65,9 +73,7 @@ namespace SpaceInvaders
             audio.PlaySfx(sfx[SFX.Click]);
             OptionsGrid.Visibility = OptionsGrid.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
         }
-        private void QuitButton_Click(object sender, RoutedEventArgs e) { 
-              this.Close();
-        }
+        private void QuitButton_Click(object sender, RoutedEventArgs e) { this.Close(); }
 
         private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
