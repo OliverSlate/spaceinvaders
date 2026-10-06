@@ -17,9 +17,5 @@ namespace SpaceInvaders.Classes
             CurrentState = newState;
             StateChanged?.Invoke(newState);
         }
-        public void EndGame()
-        {
-
-        }
     }
 }

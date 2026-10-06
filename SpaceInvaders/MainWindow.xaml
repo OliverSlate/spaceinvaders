@@ -79,10 +79,10 @@
                 <RowDefinition Height="8*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="WAVE 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="SCORE 0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,18"></TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="24" Text="x1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6"></TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="HI 0" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+            <TextBlock x:Name="WaveText" Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="WAVE 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            <TextBlock x:Name="ScoreText" Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="SCORE 0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,18"></TextBlock>
+            <TextBlock x:Name="MultiplierText" Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="24" Text="x1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6"></TextBlock>
+            <TextBlock x:Name="HighScoreText" Grid.Column="1" Grid.Row="0" Foreground="#FFF8BC04" FontSize="48" Text="HI 0" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
             <Border BorderBrush="#FF1D1D1D" BorderThickness="2" Grid.Column="1" Grid.Row="1">
                 <Canvas x:Name="GameCanvas"  Background="#000"></Canvas>
             </Border>

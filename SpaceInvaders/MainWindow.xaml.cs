@@ -29,37 +29,33 @@ namespace SpaceInvaders
             {SFX.Hover, "Resources/Audio/hover.wav" },
             {SFX.Click, "Resources/Audio/click.wav" }
         };
-        public HashSet<Key> _keysDown = new();
+        public HashSet<Key> keysDown = new();
         private TimeSpan lastRender = TimeSpan.Zero;
-        //UI
-        private Canvas gameCanvas;
-        private Rectangle playerRect;
-        //SYSTEMS
-        private readonly GameStateManager gameState = new();
-        private WaveManager waveManager;
-        private Player player;
-        private readonly AudioEngine audio = new();
+        private bool gameLoopSubscribed = false;
+        private GameStateManager gameState = new();
+        private AudioEngine audio = new();
         private SoundHandler soundHandler;
         private CanvasRenderer canvasRenderer;
-        private CollisionSystem collisionSystem;
+        private UIController uiController;
         private GameSession gameSession;
-        private GameWorld world;
-        private UIController controller;
- 
+
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             soundHandler = new SoundHandler(gameState, audio);
+            uiController = new(MenuGrid, GameGrid, ref WaveText, ref ScoreText, ref MultiplierText, ref HighScoreText);
+            gameSession = new(gameState, GameCanvas, uiController, sfxType => audio.PlaySfx(sfx[sfxType]));
 
             VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
             VolumeSlider_ValueChanged(VolumeSlider, null);
 
-            gameCanvas = GameCanvas;
             Focusable = true;
             Focus();
             KeyDown += OnKeyDown;
             KeyUp += OnKeyUp;
-            Deactivated += (_, _) => _keysDown.Clear();
+            Deactivated += (_, _) => keysDown.Clear();
+
+            CompositionTarget.Rendering += GameLoop;
         }
         private void Button_MouseEnter(object sender, MouseEventArgs e) { audio.PlaySfx(sfx[SFX.Hover]); }
 
@@ -83,29 +79,11 @@ namespace SpaceInvaders
         private void StartGame()
         {
             //UI
-            MenuGrid.Visibility = Visibility.Hidden;
-            GameGrid.Visibility = Visibility.Visible;
             gameState.SetState(State.Wave);
-
-            //Player
-            waveManager = new();
-            player = new();
-            playerRect = new Rectangle()
-            {
-                Tag = "player",
-                Width = 51,
-                Height = 51,
-                Fill = player.skin
-            };
-            player.position.x = (gameCanvas.ActualWidth - playerRect.Width) / 2;
-            player.position.y = gameCanvas.ActualHeight - playerRect.Height;
-            Canvas.SetLeft(playerRect, player.position.x);
-            Canvas.SetTop(playerRect, player.position.y);
-            gameCanvas.Children.Add(playerRect);
-
+            uiController.ShowState(gameState.CurrentState);
+            gameSession.Start(GameCanvas.ActualWidth, GameCanvas.ActualHeight);
             //Game loop setup
             lastRender = TimeSpan.Zero;
-            CompositionTarget.Rendering += GameLoop;
         }
         private void GameLoop(object sender, EventArgs e) 
         {
@@ -115,46 +93,13 @@ namespace SpaceInvaders
             double deltaTime = lastRender == TimeSpan.Zero ? 0 : (args.RenderingTime - lastRender).TotalSeconds;
             lastRender = args.RenderingTime;
             deltaTime = Math.Min(deltaTime, 0.05); //get a minimum for the same reason basically
-            HandleInput(deltaTime);
-            Render();
-            //update i fixed the choppy ass look
+            gameSession.Update(deltaTime, keysDown);
         }
-        private void HandleInput(double dT)
+        private void HandleInput() //this function will be moved to an input handler
         {
-            //get movement vector
-            Movement movement = new Movement();
-            if (_keysDown.Contains(Key.W)) movement.y += (int)Direction.Up;
-            if (_keysDown.Contains(Key.S)) movement.y += (int)Direction.Down;
-            if (_keysDown.Contains(Key.A)) movement.x += (int)Direction.Left;
-            if (_keysDown.Contains(Key.D)) movement.x += (int)Direction.Right;
-
-            //normalize
-            double len = Math.Sqrt(movement.x * movement.x + movement.y * movement.y);
-            double targetVelX = len > 0 ? (movement.x / len) * player.speed : 0;
-            double targetVelY = len > 0 ? (movement.y / len) * player.speed : 0;
-
-            //lerp (we are in space)
-            double t = Math.Clamp(player.acceleration * dT, 0, 1);
-            player.velocity.x += (targetVelX - player.velocity.x) * t;
-            player.velocity.y += (targetVelY - player.velocity.y) * t;
-
-            //move that fat ass 
-            player.position.x = Math.Clamp(player.position.x + player.velocity.x * dT, 0, gameCanvas.ActualWidth - 51);
-            player.position.y = Math.Clamp(player.position.y + player.velocity.y * dT, 0, gameCanvas.ActualHeight - 51);
+           
         }
-        private void Render()
-        {
-            Canvas.SetLeft(playerRect, player.position.x);
-            Canvas.SetTop(playerRect, player.position.y);
-            //gameCanvas.UpdateLayout();
-        }
-        private void OnKeyDown(object sender, KeyEventArgs e)
-        {
-            _keysDown.Add(e.Key);
-        }
-        private void OnKeyUp(object sender, KeyEventArgs e) 
-        {
-            _keysDown.Remove(e.Key);
-        }
+        private void OnKeyDown(object sender, KeyEventArgs e) => keysDown.Add(e.Key);
+        private void OnKeyUp(object sender, KeyEventArgs e) => keysDown.Remove(e.Key);
     }
 }

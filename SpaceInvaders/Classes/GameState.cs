@@ -23,16 +23,25 @@ namespace SpaceInvaders.Classes
         Pickup,
         Shoot
     }
-    public struct Position
-    {
-        public double x, y;
-    }
     public enum Direction
     {
         Up = -1,
         Down = 1,
         Right = 1,
         Left = -1
+    }
+    public enum Faction
+    {
+        Player,
+        Enemy
+    }
+    public struct Position
+    {
+        public double x, y;
+        public Position(double x, double y)
+        {
+            this.x = x; this.y = y;
+        }
     }
     public struct Movement
     {
@@ -41,5 +50,14 @@ namespace SpaceInvaders.Classes
     public struct Velocity
     {
         public double x, y;
+    }
+    public struct Dimensions
+    {
+        public float width, height;
+        public Dimensions(float width, float height)
+        {
+            this.width = width;
+            this.height = height;
+        }
     }
 }

@@ -1,57 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace SpaceInvaders.Classes
 {
-    internal abstract class Projectile
+    internal abstract class Projectile : Entity
     {
-        public Position position;
-        public float speed;
+        public Faction faction;
+        public int damage;
         public Direction direction;
-        public Projectile() { }
-        public abstract void Move();
+        public void Update(double dT, double canvasHeight)
+        {
+            float change = this.speed * (int)this.direction * (float)dT;
+            position.Y += change;
+            if (position.Y > canvasHeight || position.Y < -51) isAlive = false;
+        }
+        public void Deactivate() => isAlive = false;
     }
     internal class PlayerProjectile : Projectile
     {
-        public PlayerProjectile(Position position, float speed, Direction direction = Direction.Up) : base()
+        public PlayerProjectile(PointF position, float speed) : base()
         {
             this.position = position;
             this.speed = speed;
-            this.direction = direction;
-        }
-        public override void Move()
-        {
-            float change = this.speed * (int)this.direction;
-            this.position.y += change;
+            this.direction = Direction.Up;
+            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/playerprojectile.png", UriKind.Relative)));
+            damage = 1;
+            faction = Faction.Player;
+            dimensions = new Dimensions(9, 20);
         }
     }
     internal class EnemyProjectile : Projectile
     {
-        public EnemyProjectile(Position position, float speed, Direction direction = Direction.Down) : base()
+        public EnemyProjectile(PointF position, float speed) : base()
         {
             this.position = position;
             this.speed = speed;
-            this.direction = direction;
-        }
-        public override void Move()
-        {
-            float change = this.speed * (int)this.direction;
-            this.position.y += change;
+            this.direction = Direction.Down;
+            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/enemyprojectile.png")));
+            damage = 1;
+            faction = Faction.Enemy;
+            dimensions = new Dimensions(9, 20);
         }
     }
     internal class SpecialProjectile : Projectile
     {
-        public SpecialProjectile(Position position, Direction direction = Direction.Down) : base()
+        public SpecialProjectile(PointF position) : base()
         {
             this.position = position;
             this.speed = 0;
-            this.direction = direction;
-        }
-        public override void Move()
-        {
-            float change = this.speed * (int)this.direction;
-            this.position.y += change;
+            this.direction = Direction.Down;
+            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/specialattack.png")));
+            damage = 3;
+            faction = Faction.Enemy;
         }
     }
 }
