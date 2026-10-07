@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace SpaceInvaders.Classes
 {
+    public enum Flags {
+        FORCE_BOSS = 0x00000001,
+        INVINCIBLE = 0x00000010,
+        SUPER_SPEED = 0x00000100,
+        FAST_ATTACK = 0x00001000
+    }
     public enum State
     {
         Menu,

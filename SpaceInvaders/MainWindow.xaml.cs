@@ -31,13 +31,12 @@ namespace SpaceInvaders
         };
         public HashSet<Key> keysDown = new();
         private TimeSpan lastRender = TimeSpan.Zero;
-        private bool gameLoopSubscribed = false;
         private GameStateManager gameState = new();
         private AudioEngine audio = new();
         private SoundHandler soundHandler;
-        private CanvasRenderer canvasRenderer;
         private UIController uiController;
         private GameSession gameSession;
+        public int flags = 0;
 
         public MainWindow()
         {
@@ -78,10 +77,11 @@ namespace SpaceInvaders
         }
         private void StartGame()
         {
+            UpdateFlags();
             //UI
             gameState.SetState(State.Wave);
             uiController.ShowState(gameState.CurrentState);
-            gameSession.Start(GameCanvas.ActualWidth, GameCanvas.ActualHeight);
+            gameSession.Start(GameCanvas.ActualWidth, GameCanvas.ActualHeight, flags);
             //Game loop setup
             lastRender = TimeSpan.Zero;
         }
@@ -95,11 +95,14 @@ namespace SpaceInvaders
             deltaTime = Math.Min(deltaTime, 0.05); //get a minimum for the same reason basically
             gameSession.Update(deltaTime, keysDown);
         }
-        private void HandleInput() //this function will be moved to an input handler
-        {
-           
-        }
         private void OnKeyDown(object sender, KeyEventArgs e) => keysDown.Add(e.Key);
         private void OnKeyUp(object sender, KeyEventArgs e) => keysDown.Remove(e.Key);
+        private void UpdateFlags()
+        {
+            if ((bool)ForceBoss.IsChecked) flags |= (int)Flags.FORCE_BOSS;
+            if ((bool)Invincible.IsChecked) flags |= (int)Flags.INVINCIBLE;
+            if ((bool)SuperSpeed.IsChecked) flags |= (int)Flags.SUPER_SPEED;
+            if ((bool)FastAttack.IsChecked) flags |= (int)Flags.FAST_ATTACK;
+        }
     }
 }

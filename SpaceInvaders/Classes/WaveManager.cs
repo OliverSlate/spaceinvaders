@@ -17,7 +17,12 @@ namespace SpaceInvaders.Classes
         private const float enemy1chance = 0.45f;
         private const float enemy2chance = 0.35f;
         private const float enemy3chance = 0.20f;
+        private bool ForceBossWave = false;
         private Random random = new Random();
+        public WaveManager(int flags)
+        {
+            ForceBossWave = (flags & (int)Flags.FORCE_BOSS) > 0;
+        }
         public void Reset()
         {
             currentWave = 0;
@@ -98,7 +103,7 @@ namespace SpaceInvaders.Classes
         }
         public WaveKind DetermineWaveKind(int wave)
         {
-            if (wave % BossInterval == 0) return WaveKind.Boss;
+            if (ForceBossWave || wave % BossInterval == 0) return WaveKind.Boss;
             if(wave % SwarmInterval == 0 && wave % BossInterval != 0) return WaveKind.Swarm;
             return WaveKind.Normal;
         }

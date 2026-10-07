@@ -11,7 +11,7 @@ namespace SpaceInvaders.Classes
     {
         private readonly GameStateManager stateManager;
         private readonly GameWorld world = new();
-        private readonly WaveManager waveManager = new();
+        private WaveManager waveManager;
         private readonly CollisionSystem collisionSystem = new();
         private readonly CanvasRenderer canvasRenderer;
         private readonly UIController uiController;
@@ -24,6 +24,7 @@ namespace SpaceInvaders.Classes
         public int sessionScore = 0;
         public float sessionMultiplier = 1.0f;
         public int highScore = 0;
+        public int flags;
 
         public GameSession(
             GameStateManager stateManager,
@@ -39,8 +40,10 @@ namespace SpaceInvaders.Classes
             world.EnemyDied += OnEnemyDied;
         }
 
-        public void Start(double width, double height)
+        public void Start(double width, double height, int flags)
         {
+            this.flags = flags;
+            waveManager = new(flags);
             canvasWidth = width;
             canvasHeight = height;
 
@@ -51,7 +54,7 @@ namespace SpaceInvaders.Classes
             sessionScore = 0;
             sessionMultiplier = 1.0f;
 
-            player = new Player
+            player = new Player(flags)
             {
                 position = new PointF(
                     (float)((canvasWidth - 51) / 2),

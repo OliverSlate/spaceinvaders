@@ -66,6 +66,26 @@
                 <Slider x:Name="VolumeSlider" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Maximum="1" SmallChange="0.01" Value="1" TickFrequency="0.01" LargeChange="0.1"></Slider>
                 <TextBlock x:Name="VolumeText" Grid.Row="1" Text="100%" Foreground="#FFF8BC04" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,16"/>
                 <TextBlock Grid.Row="2" Text="DEBUG" Foreground="#FFF8BC04" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
+                <CheckBox x:Name="ForceBoss" Grid.Row="2" Foreground="#FFF8BC04" Content="FORCE BOSS WAVE" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,0,0,22">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.6" ScaleY="1.6" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <CheckBox x:Name="Invincible" Grid.Row="3" Foreground="#FFF8BC04" Content="INVINCIBLE" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,0,0,0">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.6" ScaleY="1.6" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <CheckBox x:Name="SuperSpeed" Grid.Row="3" Foreground="#FFF8BC04" Content="SUPER SPEED" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,0,0,0">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.6" ScaleY="1.6" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <CheckBox x:Name="FastAttack" Grid.Row="3" Foreground="#FFF8BC04" Content="FAST ATTACK" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,0,0,0">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.6" ScaleY="1.6" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
             </Grid>
         </Grid>
         <Grid x:Name="GameGrid" Visibility="Hidden">

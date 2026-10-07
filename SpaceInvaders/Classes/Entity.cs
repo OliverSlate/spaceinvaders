@@ -80,7 +80,7 @@ namespace SpaceInvaders.Classes
             health = 1;
             speed = 300;
             skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
-            scoreValue = 100;
+            scoreValue = 35;
         }
     }
     internal class Enemy2 : Enemy {
@@ -91,7 +91,7 @@ namespace SpaceInvaders.Classes
             health = 3;
             speed = 250;
             skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
-            scoreValue = 220;
+            scoreValue = 100;
         }
     }
     internal class Enemy3 : Enemy {
@@ -102,17 +102,17 @@ namespace SpaceInvaders.Classes
             health = 1;
             speed = 350f;
             skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
-            scoreValue = 350;
+            scoreValue = 150;
         }
     }
     internal class Boss : Enemy { 
         public Boss() : base()
         {
-            health = 20;
+            health = 40;
             speed = 100;
-            dimensions = new(306, 51);
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/boss.png", UriKind.Relative)));
-            scoreValue = 2000;
+            dimensions = new(306, 306);
+            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
+            scoreValue = 5000;
         }
     }
     internal class Player : Damageable
@@ -122,20 +122,23 @@ namespace SpaceInvaders.Classes
         public const int maxShield = 5;
         public float acceleration = 10f;
         public double fireCooldownRemaining = 0;
-        public double fireInterval = 0.7f;
+        public double fireInterval;
         public float projectileSpeed = 1000;
-        public Player() : base()
+        public bool invincible;
+        public Player(int flags) : base()
         {
             health = 3;
             maxHealth = 5;
-            speed = 400f;
+            speed = (flags & (int)Flags.SUPER_SPEED) > 0 ? 1600 : 400;
+            invincible = (flags & (int)Flags.INVINCIBLE) > 0 ? true : false;
+            fireInterval = (flags & (int)Flags.FAST_ATTACK) > 0 ? 0.01f : 0.7f;
             skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
         }
         public PlayerProjectile TryShoot()
         {
             if (fireCooldownRemaining > 0) return null;
             fireCooldownRemaining = fireInterval;
-            PointF projectilePos = new(position.X + 25, position.Y - 20);
+            PointF projectilePos = new(position.X + 21, position.Y - 16);
             PlayerProjectile projectile = new(projectilePos, projectileSpeed);
             return projectile;
         }
