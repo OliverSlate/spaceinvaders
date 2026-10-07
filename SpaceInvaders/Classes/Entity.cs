@@ -53,56 +53,99 @@ namespace SpaceInvaders.Classes
     }
     internal abstract class Enemy : Damageable
     {
+        public static Random random = new Random();
         public int scoreValue;
-        double fireCooldownRemaining;
-        double fireInterval;
-        float projectileSpeed;
-        bool canShoot;
-        public Enemy() : base() { }
-        public void Update(double deltaTime)
+        public double fireCooldownRemaining;
+        public double fireInterval;
+        public float projectileSpeed;
+        public Direction horizontalDir = Direction.Right;
+        public bool movingDown = false;
+        public float dropStartY;
+        public Enemy() : base() => dropStartY = position.Y;
+        public void Update(double dT, double canvasWidth)
         {
-            if(fireCooldownRemaining > 0) fireCooldownRemaining -= deltaTime;
-            //enemy movement
+            if (fireCooldownRemaining > 0) fireCooldownRemaining -= dT;
+            if (movingDown)
+            {
+                position.Y += speed * (float)dT;
+                if (position.Y >= dropStartY + 51)
+                {
+                    position.Y = dropStartY + 51;
+                    movingDown = false;
+                }
+                return;
+            }
+            position.X += speed * (int)horizontalDir * (float)dT;
+            if (position.X > canvasWidth - 63 || position.X < 12)
+            {
+                position.X = Math.Clamp(position.X, 12f, (float)canvasWidth - 63f);
+                horizontalDir = horizontalDir == Direction.Right ? Direction.Left : Direction.Right;
+                dropStartY = position.Y;
+                movingDown = true;
+            }
         }
-        public EnemyProjectile TryShoot()
+        public abstract EnemyProjectile TryShoot();
+    }
+    internal class Enemy1 : Enemy {
+        //Weak enemy
+        public Enemy1() : base() {
+            health = 1;
+            speed = 60;
+            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
+            scoreValue = 35;
+            projectileSpeed = 300;
+            fireInterval = 5;
+            fireCooldownRemaining = random.NextDouble() * fireInterval;
+        }
+        public override EnemyProjectile TryShoot()
         {
-            if (!canShoot || fireCooldownRemaining > 0) return null;
+            if (fireCooldownRemaining > 0) return null;
             fireCooldownRemaining = fireInterval;
             PointF projectilePos = new(position.X + 25, position.Y + 51);
             EnemyProjectile projectile = new(projectilePos, projectileSpeed);
             return projectile;
         }
     }
-    internal class Enemy1 : Enemy {
-        //Weak enemy
-        public float projectileSpeed = 300;
-        public Enemy1() : base() {
-            health = 1;
-            speed = 300;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
-            scoreValue = 35;
-        }
-    }
     internal class Enemy2 : Enemy {
         //strong enemy
-        public float projectileSpeed = 200;
         public Enemy2() : base()
         {
             health = 3;
-            speed = 250;
+            speed = 90;
             skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
             scoreValue = 100;
+            projectileSpeed = 200;
+            fireInterval = 4;
+            fireCooldownRemaining = random.NextDouble() * fireInterval;
+        }
+        public override EnemyProjectile TryShoot()
+        {
+            if (fireCooldownRemaining > 0) return null;
+            fireCooldownRemaining = fireInterval;
+            PointF projectilePos = new(position.X + 25, position.Y + 51);
+            EnemyProjectile projectile = new(projectilePos, projectileSpeed);
+            return projectile;
         }
     }
     internal class Enemy3 : Enemy {
         //special enemy
-        public float  projectileSpeed = 0;
         public Enemy3() : base()
         {
             health = 1;
-            speed = 350f;
+            speed = 50;
             skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
             scoreValue = 150;
+            projectileSpeed = 50;
+            fireInterval = 8;
+            fireCooldownRemaining = random.NextDouble() * fireInterval;
+        }
+        public override EnemyProjectile TryShoot()
+        {
+            if (fireCooldownRemaining > 0) return null;
+            fireCooldownRemaining = fireInterval;
+            PointF projectilePos = new(position.X + 25, position.Y + 51);
+            EnemyProjectile projectile = new(projectilePos, projectileSpeed);
+            return projectile;
         }
     }
     internal class Boss : Enemy { 
@@ -113,10 +156,22 @@ namespace SpaceInvaders.Classes
             dimensions = new(306, 306);
             skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
             scoreValue = 5000;
+            projectileSpeed = 600;
+            fireInterval = Math.Max(random.NextDouble() * 1.5f, 0.35f);
+            fireCooldownRemaining = fireInterval;
+        }
+        public override EnemyProjectile TryShoot()
+        {
+            if (fireCooldownRemaining > 0) return null;
+            fireCooldownRemaining = fireInterval;
+            PointF projectilePos = new((position.X + (position.X + dimensions.width)) / 2, position.Y + dimensions.height);
+            EnemyProjectile projectile = new(projectilePos, projectileSpeed);
+            return projectile;
         }
     }
     internal class Player : Damageable
     {
+        public event Action Damaged;
         public Velocity velocity;
         public int shield = 0;
         public const int maxShield = 5;
@@ -170,6 +225,8 @@ namespace SpaceInvaders.Classes
         }
         public void TakeDamage(int dmg)
         {
+            if (invincible) return;
+            Damaged?.Invoke();
             while (dmg != 0)
             {
                 if (shield > 0) shield--;

@@ -62,6 +62,7 @@ namespace SpaceInvaders.Classes
             };
 
             player.Died += OnPlayerDied;
+            player.Damaged += () => sessionMultiplier = 1f;
             world.SetPlayer(player);
 
             stateManager.SetState(State.Wave);
@@ -107,7 +108,7 @@ namespace SpaceInvaders.Classes
                 if (!enemy.isAlive)
                     continue;
 
-                enemy.Update(deltaTime);
+                enemy.Update(deltaTime, canvasWidth);
 
                 EnemyProjectile projectile = enemy.TryShoot();
 

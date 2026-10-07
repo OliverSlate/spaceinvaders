@@ -40,7 +40,7 @@ namespace SpaceInvaders.Classes
             this.position = position;
             this.speed = speed;
             this.direction = Direction.Down;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/enemyprojectile.png")));
+            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/enemyprojectile.png", UriKind.Relative)));
             damage = 1;
             faction = Faction.Enemy;
             dimensions = new Dimensions(9, 20);
