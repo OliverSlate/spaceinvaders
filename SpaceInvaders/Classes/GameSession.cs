@@ -25,6 +25,8 @@ namespace SpaceInvaders.Classes
         public float sessionMultiplier = 1.0f;
         public int highScore = 0;
         public int flags;
+        public double animationTimer = 0f;
+        public int animationFrame = 0;
 
         public GameSession(
             GameStateManager stateManager,
@@ -68,7 +70,7 @@ namespace SpaceInvaders.Classes
             stateManager.SetState(State.Wave);
             StartNextWave();
 
-            canvasRenderer.Synchronize(world);
+            canvasRenderer.Synchronize(world, animationFrame);
 
             uiController.UpdateHud(
                 waveManager.currentWave,
@@ -124,16 +126,23 @@ namespace SpaceInvaders.Classes
             collisionSystem.Resolve(world);
             world.RemoveInactiveEntities();
 
+            animationTimer += deltaTime;
+            if (animationTimer >= 0.5)
+            {
+                animationTimer -= 0.5;
+                animationFrame++;
+            }
+
             if (!player.isAlive)
             {
-                canvasRenderer.Synchronize(world);
+                canvasRenderer.Synchronize(world, animationFrame);
                 return;
             }
 
             if (world.Enemies.Count == 0)
                 StartNextWave();
 
-            canvasRenderer.Synchronize(world);
+            canvasRenderer.Synchronize(world, animationFrame);
 
             uiController.UpdateHud(
                 waveManager.currentWave,

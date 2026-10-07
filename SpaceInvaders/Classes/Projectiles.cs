@@ -27,7 +27,7 @@ namespace SpaceInvaders.Classes
             this.position = position;
             this.speed = speed;
             this.direction = Direction.Up;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/playerprojectile.png", UriKind.Relative)));
+            skinFrames = new[] { LoadBrush("Resources/Images/playerprojectile.png") };
             damage = 1;
             faction = Faction.Player;
             dimensions = new Dimensions(9, 20);
@@ -40,7 +40,7 @@ namespace SpaceInvaders.Classes
             this.position = position;
             this.speed = speed;
             this.direction = Direction.Down;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/enemyprojectile.png", UriKind.Relative)));
+            skinFrames = new[] { LoadBrush("Resources/Images/enemyprojectile.png") };
             damage = 1;
             faction = Faction.Enemy;
             dimensions = new Dimensions(9, 20);
@@ -53,7 +53,7 @@ namespace SpaceInvaders.Classes
             this.position = position;
             this.speed = 0;
             this.direction = Direction.Down;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/specialattack.png")));
+            skinFrames = new[] { LoadBrush("Resources/Images/specialattack.png") };
             damage = 3;
             faction = Faction.Enemy;
         }

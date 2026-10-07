@@ -13,12 +13,15 @@
     <WarningLevel>4</WarningLevel>
     <Deterministic>true</Deterministic>
     <Nullable>disable</Nullable>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\Audio\click.wav" />
     <None Remove="Resources\Audio\game.wav" />
     <None Remove="Resources\Audio\mainmenu.wav" />
+    <None Remove="Resources\Images\enemy1_0.png" />
+    <None Remove="Resources\Images\enemy1_1.png" />
     <None Remove="Resources\Images\enemyprojectile.png" />
     <None Remove="Resources\Images\heartempty.png" />
     <None Remove="Resources\Images\heartfull.png" />
@@ -49,6 +52,14 @@
     </Content>
 
     <Content Include="Resources\Audio\game.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\enemy1_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\enemy1_1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 

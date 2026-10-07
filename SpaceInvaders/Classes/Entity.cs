@@ -18,7 +18,7 @@ namespace SpaceInvaders.Classes
         public Dimensions dimensions = new Dimensions(51, 51);
         public bool isAlive = true;
         public float speed;
-        public ImageBrush skin;
+        public ImageBrush[] skinFrames;
         public Entity()
         {
             Id = Guid.NewGuid().ToString();
@@ -29,6 +29,12 @@ namespace SpaceInvaders.Classes
             PointF origin = new(position.X, position.Y);
             SizeF size = new(dimensions.width, dimensions.height);
             return new RectangleF(origin, size);
+        }
+        public static ImageBrush LoadBrush(string path)
+        {
+            var brush = new ImageBrush(new BitmapImage(new Uri(path, UriKind.Relative)));
+            brush.Freeze();
+            return brush;
         }
     }
     internal abstract class Damageable : Entity
@@ -91,7 +97,7 @@ namespace SpaceInvaders.Classes
         public Enemy1() : base() {
             health = 1;
             speed = 60;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
+            skinFrames = new[] { LoadBrush("Resources/Images/enemy1_0.png"), LoadBrush("Resources/Images/enemy1_1.png") };
             scoreValue = 35;
             projectileSpeed = 300;
             fireInterval = 5;
@@ -112,7 +118,7 @@ namespace SpaceInvaders.Classes
         {
             health = 3;
             speed = 90;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
+            skinFrames = new[] { LoadBrush("Resources/Images/player.png") };
             scoreValue = 100;
             projectileSpeed = 200;
             fireInterval = 4;
@@ -133,7 +139,7 @@ namespace SpaceInvaders.Classes
         {
             health = 1;
             speed = 50;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
+            skinFrames = new[] { LoadBrush("Resources/Images/player.png") };
             scoreValue = 150;
             projectileSpeed = 50;
             fireInterval = 8;
@@ -154,7 +160,7 @@ namespace SpaceInvaders.Classes
             health = 40;
             speed = 100;
             dimensions = new(306, 306);
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
+            skinFrames = new[] { LoadBrush("Resources/Images/player.png") };
             scoreValue = 5000;
             projectileSpeed = 600;
             fireInterval = Math.Max(random.NextDouble() * 1.5f, 0.35f);
@@ -187,7 +193,7 @@ namespace SpaceInvaders.Classes
             speed = (flags & (int)Flags.SUPER_SPEED) > 0 ? 1600 : 400;
             invincible = (flags & (int)Flags.INVINCIBLE) > 0 ? true : false;
             fireInterval = (flags & (int)Flags.FAST_ATTACK) > 0 ? 0.01f : 0.7f;
-            skin = new ImageBrush(new BitmapImage(new Uri("Resources/Images/player.png", UriKind.Relative)));
+            skinFrames = new[] { LoadBrush("Resources/Images/player.png") };
         }
         public PlayerProjectile TryShoot()
         {

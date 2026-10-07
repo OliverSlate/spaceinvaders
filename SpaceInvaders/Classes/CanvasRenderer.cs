@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace SpaceInvaders.Classes
@@ -15,7 +16,7 @@ namespace SpaceInvaders.Classes
             this.canvas = canvas;
         }
 
-        public void Synchronize(GameWorld world)
+        public void Synchronize(GameWorld world, int animationFrame)
         {
             List<Entity> activeEntities = world.GetLiveEntities().ToList();
 
@@ -28,6 +29,9 @@ namespace SpaceInvaders.Classes
 
                 Canvas.SetLeft(rectangle, entity.position.X);
                 Canvas.SetTop(rectangle, entity.position.Y);
+                ImageBrush frame = entity.skinFrames[animationFrame % entity.skinFrames.Length];
+                if (!ReferenceEquals(rectangle.Fill, frame))
+                    rectangle.Fill = frame;
             }
 
             List<Entity> removedEntities = visuals.Keys
@@ -48,7 +52,7 @@ namespace SpaceInvaders.Classes
                 Tag = entity.Id,
                 Width = entity.dimensions.width,
                 Height = entity.dimensions.height,
-                Fill = entity.skin
+                Fill = entity.skinFrames[0]
             };
 
             Canvas.SetLeft(rectangle, entity.position.X);

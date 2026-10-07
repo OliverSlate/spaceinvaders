@@ -10,6 +10,8 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/click.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/game.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/enemy1_0.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/enemy1_1.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/heartempty.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/heartfull.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/player.png")]
