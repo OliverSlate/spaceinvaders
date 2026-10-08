@@ -168,6 +168,7 @@ namespace SpaceInvaders.Classes
         private void OnPlayerDied(Damageable damageable)
         {
             stateManager.SetState(State.Loss);
+            uiController.ShowState(stateManager.CurrentState);
             playSfx(SFX.Explosion);
         }
 

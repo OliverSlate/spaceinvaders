@@ -10,13 +10,15 @@ namespace SpaceInvaders.Classes
     {
         Grid _mainMenu;
         Grid _gameMenu;
+        Grid _loseMenu;
         TextBlock _wave;
         TextBlock _score;
         TextBlock _mult;
         TextBlock _hi;
-        public UIController(Grid mainMenu, Grid gameMenu, ref TextBlock wave, ref TextBlock score, ref TextBlock mult, ref TextBlock hi) {
+        public UIController(Grid mainMenu, Grid gameMenu, Grid loseMenu, ref TextBlock wave, ref TextBlock score, ref TextBlock mult, ref TextBlock hi) {
             _mainMenu = mainMenu;
             _gameMenu = gameMenu;
+            _loseMenu = loseMenu;
             _wave = wave;
             _score = score;
             _mult = mult;
@@ -29,10 +31,12 @@ namespace SpaceInvaders.Classes
                 case State.Menu:
                     _mainMenu.Visibility = Visibility.Visible;
                     _gameMenu.Visibility = Visibility.Hidden;
+                    _loseMenu.Visibility = Visibility.Hidden;
                     break;
                 case State.Wave:
                     _mainMenu.Visibility= Visibility.Hidden;
                     _gameMenu.Visibility = Visibility.Visible;
+                    _loseMenu.Visibility= Visibility.Hidden;
                     break;
                 case State.BossAlert:
                     break;
@@ -41,6 +45,7 @@ namespace SpaceInvaders.Classes
                 case State.Win:
                     break;
                 case State.Loss:
+                    _loseMenu.Visibility = Visibility.Visible;
                     break;
                 default:
                     break;

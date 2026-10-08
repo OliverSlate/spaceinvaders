@@ -25,6 +25,7 @@ namespace SpaceInvaders.Classes
                             projectile.isAlive = false;
                             break;
                         }
+                        
                     }
                 }
                 else
@@ -35,6 +36,17 @@ namespace SpaceInvaders.Classes
                         world.player.TakeDamage(projectile.damage);
                         projectile.isAlive = false;
                     }
+                }
+            }
+            foreach (Enemy enemy in world.Enemies)
+            {
+                if (!world.player.isAlive) return;
+                if (!enemy.isAlive) continue;
+                RectangleF enemyBounds = enemy.GetBounds();
+                if(enemyBounds.IntersectsWith(world.player.GetBounds()))
+                {
+                    world.player.Die();
+                    enemy.Die();
                 }
             }
         }

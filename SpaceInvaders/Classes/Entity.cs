@@ -92,9 +92,9 @@ namespace SpaceInvaders.Classes
         }
         public abstract EnemyProjectile TryShoot();
     }
-    internal class Enemy1 : Enemy {
+    internal class Kimi : Enemy {
         //Weak enemy
-        public Enemy1() : base() {
+        public Kimi() : base() {
             health = 1;
             speed = 60;
             skinFrames = new[] { LoadBrush("Resources/Images/enemy1_0.png"), LoadBrush("Resources/Images/enemy1_1.png") };
@@ -118,7 +118,7 @@ namespace SpaceInvaders.Classes
         {
             health = 3;
             speed = 90;
-            skinFrames = new[] { LoadBrush("Resources/Images/player.png") };
+            skinFrames = new[] { LoadBrush("Resources/Images/enemy2_0.png"), LoadBrush("Resources/Images/enemy2_1.png") };
             scoreValue = 100;
             projectileSpeed = 200;
             fireInterval = 4;
@@ -139,7 +139,7 @@ namespace SpaceInvaders.Classes
         {
             health = 1;
             speed = 50;
-            skinFrames = new[] { LoadBrush("Resources/Images/player.png") };
+            skinFrames = new[] { LoadBrush("Resources/Images/enemy3_0.png"), LoadBrush("Resources/Images/enemy3_1.png") };
             scoreValue = 150;
             projectileSpeed = 50;
             fireInterval = 8;
@@ -153,6 +153,21 @@ namespace SpaceInvaders.Classes
             EnemyProjectile projectile = new(projectilePos, projectileSpeed);
             return projectile;
         }
+    }
+    internal class Tank : Enemy
+    {
+        //tank for special enemy
+        public Tank() : base()
+        {
+            health = 5;
+            speed = 50;
+            skinFrames = new[] { LoadBrush("Resources/Images/player.png"), LoadBrush("Resources/Images/player.png") };
+            scoreValue = 150;
+            projectileSpeed = 0;
+            fireInterval = 0;
+            fireCooldownRemaining = 0;
+        }
+        public override EnemyProjectile TryShoot() => null;
     }
     internal class Boss : Enemy { 
         public Boss() : base()

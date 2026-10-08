@@ -31,7 +31,7 @@ namespace SpaceInvaders.Classes
                 State.BossAlert => "Resources/Audio/bossalert.wav",
                 State.BossWave => "Resources/Audio/game.wav",
                 State.Win => "Resources/Audio/win.wav",
-                State.Loss => "Resources/Audio/lose.wav",
+                State.Loss => "Resources/Audio/game.wav",
                 _ => throw new ArgumentOutOfRangeException()
             };
             audio.PlayMusic(track);
