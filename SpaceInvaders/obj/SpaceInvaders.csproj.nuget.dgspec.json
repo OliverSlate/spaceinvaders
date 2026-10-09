@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\SpaceInvaders.csproj": {}
+    "C:\\Users\\olang\\source\\repos\\spaceinvaders\\SpaceInvaders\\SpaceInvaders.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\SpaceInvaders.csproj": {
+    "C:\\Users\\olang\\source\\repos\\spaceinvaders\\SpaceInvaders\\SpaceInvaders.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\SpaceInvaders.csproj",
+        "projectUniqueName": "C:\\Users\\olang\\source\\repos\\spaceinvaders\\SpaceInvaders\\SpaceInvaders.csproj",
         "projectName": "SpaceInvaders",
-        "projectPath": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\SpaceInvaders.csproj",
-        "packagesPath": "C:\\Users\\oliwi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\obj\\",
+        "projectPath": "C:\\Users\\olang\\source\\repos\\spaceinvaders\\SpaceInvaders\\SpaceInvaders.csproj",
+        "packagesPath": "C:\\Users\\olang\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\olang\\source\\repos\\spaceinvaders\\SpaceInvaders\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\oliwi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\olang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

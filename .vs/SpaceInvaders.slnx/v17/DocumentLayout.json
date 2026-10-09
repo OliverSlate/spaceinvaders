@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\olang\\source\\repos\\spaceinvaders\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\olang\\source\\repos\\spaceinvaders\\spaceinvaders\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\olang\\source\\repos\\spaceinvaders\\SpaceInvaders\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "SpaceInvaders\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\olang\\source\\repos\\spaceinvaders\\SpaceInvaders\\MainWindow.xaml",
+              "RelativeToolTip": "SpaceInvaders\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-10-09T10:26:24.601Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

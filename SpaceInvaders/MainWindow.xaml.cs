@@ -56,7 +56,7 @@ namespace SpaceInvaders
 
             CompositionTarget.Rendering += GameLoop;
         }
-        private void Button_MouseEnter(object sender, MouseEventArgs e) { audio.PlaySfx(sfx[SFX.Hover]); }
+        private void Button_MouseEnter(object sender, MouseEventArgs e) => audio.PlaySfx(sfx[SFX.Hover]);
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
@@ -72,11 +72,8 @@ namespace SpaceInvaders
             audio.PlaySfx(sfx[SFX.Click]);
             OptionsGrid.Visibility = OptionsGrid.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
         }
-        private void QuitButton_Click(object sender, RoutedEventArgs e) { this.Close(); }
-        private void MenuButton_Click(object sender, RoutedEventArgs e)
-        {
-            uiController.ShowState(State.Menu);
-        }
+        private void QuitButton_Click(object sender, RoutedEventArgs e) => this.Close();
+        private void MenuButton_Click(object sender, RoutedEventArgs e) => uiController.ShowState(State.Menu);
         private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
             GameCanvas.Children.Clear();
@@ -113,6 +110,7 @@ namespace SpaceInvaders
         private void OnKeyUp(object sender, KeyEventArgs e) => keysDown.Remove(e.Key);
         private void UpdateFlags()
         {
+            flags = 0x0000;
             if ((bool)ForceBoss.IsChecked) flags |= (int)Flags.FORCE_BOSS;
             if ((bool)Invincible.IsChecked) flags |= (int)Flags.INVINCIBLE;
             if ((bool)SuperSpeed.IsChecked) flags |= (int)Flags.SUPER_SPEED;
