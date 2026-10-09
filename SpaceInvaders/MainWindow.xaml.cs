@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,7 +44,8 @@ namespace SpaceInvaders
             InitializeComponent(); 
             soundHandler = new SoundHandler(gameState, audio);
             uiController = new(MenuGrid, GameGrid, LoseGrid, HealthCanvas, PowerUpCanvas, ref WaveText, ref ScoreText, ref MultiplierText, ref HighScoreText);
-            gameSession = new(gameState, GameCanvas, uiController, sfxType => audio.PlaySfx(sfx[sfxType]));
+            int highscore = ReadHighScore();
+            gameSession = new(gameState, GameCanvas, uiController, highscore,sfxType => audio.PlaySfx(sfx[sfxType]));
 
             VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
             VolumeSlider_ValueChanged(VolumeSlider, null);
@@ -55,6 +57,15 @@ namespace SpaceInvaders
             Deactivated += (_, _) => keysDown.Clear();
 
             CompositionTarget.Rendering += GameLoop;
+        }
+        private int ReadHighScore()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "highscore.txt";
+            if (File.Exists(path))
+            {
+                return Int32.Parse(File.ReadAllText(path));
+            }
+            return 0;
         }
         private void Button_MouseEnter(object sender, MouseEventArgs e) => audio.PlaySfx(sfx[SFX.Hover]);
 
@@ -77,7 +88,8 @@ namespace SpaceInvaders
         private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
             GameCanvas.Children.Clear();
-            gameSession = new(gameState, GameCanvas, uiController, sfxType => audio.PlaySfx(sfx[sfxType]));
+            int highscore = ReadHighScore();
+            gameSession = new(gameState, GameCanvas, uiController, highscore, sfxType => audio.PlaySfx(sfx[sfxType]));
             StartGame();
         }
 

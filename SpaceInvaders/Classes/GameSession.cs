@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
@@ -39,11 +40,13 @@ namespace SpaceInvaders.Classes
             GameStateManager stateManager,
             Canvas canvas,
             UIController uiController,
+            int highScore,
             Action<SFX> playSfx)
         {
             this.stateManager = stateManager;
             this.uiController = uiController;
             this.playSfx = playSfx;
+            this.highScore = highScore;
             pickupTimer = basePickupTimer;
 
             canvasRenderer = new CanvasRenderer(canvas);
@@ -205,17 +208,10 @@ namespace SpaceInvaders.Classes
 
         private void OnPlayerDied(Damageable damageable)
         {
-            stateManager.SetState(State.Loss);
-            uiController.ShowState(stateManager.CurrentState);
+            EndGame();
             playSfx(SFX.Explosion);
         }
-
-        private void OnEnemyReachedEnd()
-        {
-            stateManager.SetState(State.Loss);
-            uiController.ShowState(stateManager.CurrentState);
-        }
-
+        private void OnEnemyReachedEnd() => EndGame();
         private void OnEnemyDied(Enemy enemy)
         {
             sessionScore += (int)(enemy.scoreValue * sessionMultiplier * bonusPoints);
@@ -225,6 +221,14 @@ namespace SpaceInvaders.Classes
                 highScore = sessionScore;
 
             playSfx(SFX.Explosion);
+        }
+        private void EndGame()
+        {
+            stateManager.SetState(State.Loss);
+            uiController.ShowState(stateManager.CurrentState);
+
+            string path = AppDomain.CurrentDomain.BaseDirectory + "highscore.txt";
+            File.WriteAllText(path, highScore.ToString());
         }
     }
 }
