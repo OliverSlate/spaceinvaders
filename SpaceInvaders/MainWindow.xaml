@@ -111,11 +111,10 @@
             <Grid x:Name="PowerUpGrid" Grid.Column="2" Grid.Row="1" Background="#000" VerticalAlignment="Top" HorizontalAlignment="Center" Width="180" Height="400">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="6*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock  Grid.Row="0" Foreground="#FFF8BC04" FontSize="24" Text="POWERUPS" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <Canvas x:Name="PowerUpCanvas" Grid.Row="1"></Canvas>
             </Grid>
             <Canvas x:Name="HealthCanvas" Grid.Column="1" Grid.Row="2" Background="#000"></Canvas>
             <Grid x:Name="LoseGrid" Grid.Row="1" Grid.Column="1" Background="#66000000" Visibility="Hidden">

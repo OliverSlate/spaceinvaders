@@ -30,7 +30,8 @@ namespace SpaceInvaders.Classes
         public int animationFrame = 0;
         public double gracePeriod = 1;
         public double graceTimer = 1;
-        public double pickupTimer = 5;
+        public double pickupTimer;
+        public double basePickupTimer = 5;
         public int bonusPoints = 1;
         public double bonusPointsCounter = 0;
 
@@ -43,6 +44,7 @@ namespace SpaceInvaders.Classes
             this.stateManager = stateManager;
             this.uiController = uiController;
             this.playSfx = playSfx;
+            pickupTimer = basePickupTimer;
 
             canvasRenderer = new CanvasRenderer(canvas);
             world.EnemyDied += OnEnemyDied;
@@ -169,12 +171,12 @@ namespace SpaceInvaders.Classes
             pickupTimer -= deltaTime;
             if(pickupTimer <= 0)
             {
-                if(rnd.NextDouble() > 0.7)
+                if(rnd.NextDouble() > 0.6)
                 {
                     Pickup pickup = new(canvasWidth, canvasHeight);
                     world.AddPickup(pickup);
                 }
-                pickupTimer = 5;
+                pickupTimer = basePickupTimer;
             } 
 
             canvasRenderer.Synchronize(world, animationFrame);
@@ -185,6 +187,7 @@ namespace SpaceInvaders.Classes
                 sessionMultiplier * bonusPoints,
                 highScore,
                 player);
+            uiController.UpdatePowerups(player, bonusPointsCounter);
         }
 
         private void StartNextWave()

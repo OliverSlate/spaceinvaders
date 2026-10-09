@@ -16,15 +16,17 @@ namespace SpaceInvaders.Classes
         Grid _gameMenu;
         Grid _loseMenu;
         Canvas _healthCanvas;
+        Canvas _powerupCanvas;
         TextBlock _wave;
         TextBlock _score;
         TextBlock _mult;
         TextBlock _hi;
-        public UIController(Grid mainMenu, Grid gameMenu, Grid loseMenu, Canvas healthCanvas, ref TextBlock wave, ref TextBlock score, ref TextBlock mult, ref TextBlock hi) {
+        public UIController(Grid mainMenu, Grid gameMenu, Grid loseMenu, Canvas healthCanvas, Canvas powerupCanvas, ref TextBlock wave, ref TextBlock score, ref TextBlock mult, ref TextBlock hi) {
             _mainMenu = mainMenu;
             _gameMenu = gameMenu;
             _loseMenu = loseMenu;
             _healthCanvas = healthCanvas;
+            _powerupCanvas = powerupCanvas;
             _wave = wave;
             _score = score;
             _mult = mult;
@@ -68,7 +70,8 @@ namespace SpaceInvaders.Classes
         {
             _wave.Text = "Wave " + wave;
             _score.Text = "Score: " + score;
-            _mult.Text = "x" + Math.Round(multiplier, 2);     
+            _mult.Text = "x" + Math.Round(multiplier, 2);
+            _hi.Text = "HI: " + hi;
         }
         public void UpdateHealth(Player player)
         {
@@ -100,6 +103,56 @@ namespace SpaceInvaders.Classes
                 Canvas.SetTop(rect, 12);
                 Canvas.SetLeft(rect, 12 + i * 51);
                 _healthCanvas.Children.Add(rect);
+            }
+        }
+        public void UpdatePowerups(Player player, double bonusPointsCounter)
+        {
+            _powerupCanvas.Children.Clear();
+            if (player.fastShootTimer > 0)
+            {
+                Rectangle rect = new Rectangle()
+                {
+                    Tag = "fastShoot",
+                    Width = 51,
+                    Height = 51,
+                    Fill = new ImageBrush(new BitmapImage(new Uri("Resources/Images/pickup_shoot_0.png", UriKind.Relative)))
+                };
+                Canvas.SetTop(rect, 12);
+                Canvas.SetLeft(rect, 12);
+                TextBlock text = new TextBlock()
+                {
+                    Tag = "fastShoot",
+                    FontSize = 36,
+                    Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#F8BC04"),
+                    Text = Math.Round(player.fastShootTimer, 1).ToString()
+                };
+                Canvas.SetTop(text, 16);
+                Canvas.SetLeft(text, 24 + 51);
+                _powerupCanvas.Children.Add(rect);
+                _powerupCanvas.Children.Add(text);
+            }
+            if (bonusPointsCounter > 0)
+            {
+                Rectangle rect = new Rectangle()
+                {
+                    Tag = "bonusPoints",
+                    Width = 51,
+                    Height = 51,
+                    Fill = new ImageBrush(new BitmapImage(new Uri("Resources/Images/pickup_points_0.png", UriKind.Relative)))
+                };
+                Canvas.SetTop(rect, 12 + 51);
+                Canvas.SetLeft(rect, 12);
+                TextBlock text = new TextBlock()
+                {
+                    Tag = "bonusPoints",
+                    FontSize = 36,
+                    Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#F8BC04"),
+                    Text = Math.Round(bonusPointsCounter, 1).ToString()
+                };
+                Canvas.SetTop(text, 16 + 51);
+                Canvas.SetLeft(text, 24 + 51);
+                _powerupCanvas.Children.Add(rect);
+                _powerupCanvas.Children.Add(text);
             }
         }
     }
