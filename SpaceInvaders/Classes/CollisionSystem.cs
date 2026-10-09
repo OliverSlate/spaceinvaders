@@ -8,6 +8,7 @@ namespace SpaceInvaders.Classes
 {
     internal class CollisionSystem
     {
+        public event Action<Pickup> PickedUp;
         public void Resolve(GameWorld world)
         {
             foreach (Projectile projectile in world.Projectiles)
@@ -45,8 +46,19 @@ namespace SpaceInvaders.Classes
                 RectangleF enemyBounds = enemy.GetBounds();
                 if(enemyBounds.IntersectsWith(world.player.GetBounds()))
                 {
-                    world.player.Die();
+                    world.player.TakeDamage(2137);
                     enemy.Die();
+                }
+            }
+            foreach(Pickup pickup in world.PickUps)
+            {
+                if (!pickup.isAlive) continue;
+                RectangleF pickupBounds = pickup.GetBounds();
+                if (pickupBounds.IntersectsWith(world.player.GetBounds()))
+                {
+                    world.player.PickUp(pickup);
+                    pickup.isAlive = false;
+                    PickedUp?.Invoke(pickup);
                 }
             }
         }

@@ -42,7 +42,7 @@ namespace SpaceInvaders
         {
             InitializeComponent(); 
             soundHandler = new SoundHandler(gameState, audio);
-            uiController = new(MenuGrid, GameGrid, LoseGrid, ref WaveText, ref ScoreText, ref MultiplierText, ref HighScoreText);
+            uiController = new(MenuGrid, GameGrid, LoseGrid, HealthCanvas, ref WaveText, ref ScoreText, ref MultiplierText, ref HighScoreText);
             gameSession = new(gameState, GameCanvas, uiController, sfxType => audio.PlaySfx(sfx[sfxType]));
 
             VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
@@ -62,6 +62,10 @@ namespace SpaceInvaders
         {
             audio.PlaySfx(sfx[SFX.Click]);
             StartGame();
+        }
+        private void InstrukcjaButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {

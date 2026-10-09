@@ -6,10 +6,12 @@ namespace SpaceInvaders.Classes
     internal class GameWorld
     {
         public event Action<Enemy> EnemyDied;
+        public event Action EnemyReachedEnd;
 
         public Player player;
-        public List<Enemy> Enemies = new();
-        public List<Projectile> Projectiles = new();
+        public List<Enemy> Enemies = [];
+        public List<Projectile> Projectiles = [];
+        public List<Pickup> PickUps = [];
 
         public void Reset()
         {
@@ -27,11 +29,14 @@ namespace SpaceInvaders.Classes
         {
             Enemies.Add(enemy);
             enemy.Died += OnDamageableDied;
+            enemy.ReachedEnd += () => EnemyReachedEnd?.Invoke();
         }
 
-        public void AddProjectile(Projectile projectile)
+        public void AddProjectile(Projectile projectile) => Projectiles.Add(projectile);
+        
+        public void AddPickup(Pickup pickup)
         {
-            Projectiles.Add(projectile);
+            PickUps.Add(pickup);
         }
 
         public void RemoveInactiveEntities()
@@ -55,6 +60,12 @@ namespace SpaceInvaders.Classes
             {
                 if (projectile.isAlive)
                     yield return projectile;
+            }
+
+            foreach (Pickup pickup in PickUps)
+            {
+                if (pickup.isAlive)
+                    yield return pickup;
             }
         }
 

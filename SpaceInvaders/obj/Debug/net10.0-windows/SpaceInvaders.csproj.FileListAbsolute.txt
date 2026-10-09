@@ -53,3 +53,13 @@ C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-window
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\enemy2_1.png
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\enemy3_0.png
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\enemy3_1.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_shoot_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_shoot_1.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_shoot_2.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_shoot_3.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_heart_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_heart_1.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_points_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_points_1.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_shield_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\pickup_shield_1.png

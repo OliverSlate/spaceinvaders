@@ -59,6 +59,7 @@ namespace SpaceInvaders.Classes
     }
     internal abstract class Enemy : Damageable
     {
+        public event Action ReachedEnd;
         public static Random random = new Random();
         public int scoreValue;
         public double fireCooldownRemaining;
@@ -68,8 +69,9 @@ namespace SpaceInvaders.Classes
         public bool movingDown = false;
         public float dropStartY;
         public Enemy() : base() => dropStartY = position.Y;
-        public void Update(double dT, double canvasWidth)
+        public void Update(double dT, double canvasWidth, double canvasHeight)
         {
+            if (position.Y > canvasHeight - dimensions.height - 12) ReachedEnd?.Invoke();
             if (fireCooldownRemaining > 0) fireCooldownRemaining -= dT;
             if (movingDown)
             {
@@ -82,7 +84,7 @@ namespace SpaceInvaders.Classes
                 return;
             }
             position.X += speed * (int)horizontalDir * (float)dT;
-            if (position.X > canvasWidth - 63 || position.X < 12)
+            if (position.X > canvasWidth - dimensions.width - 12 || position.X < 12)
             {
                 position.X = Math.Clamp(position.X, 12f, (float)canvasWidth - 63f);
                 horizontalDir = horizontalDir == Direction.Right ? Direction.Left : Direction.Right;
@@ -96,7 +98,7 @@ namespace SpaceInvaders.Classes
         //Weak enemy
         public Kimi() : base() {
             health = 1;
-            speed = 60;
+            speed = random.Next(60, 72);
             skinFrames = new[] { LoadBrush("Resources/Images/enemy1_0.png"), LoadBrush("Resources/Images/enemy1_1.png") };
             scoreValue = 35;
             projectileSpeed = 300;
@@ -117,7 +119,7 @@ namespace SpaceInvaders.Classes
         public Enemy2() : base()
         {
             health = 3;
-            speed = 90;
+            speed = random.Next(90, 108);
             skinFrames = new[] { LoadBrush("Resources/Images/enemy2_0.png"), LoadBrush("Resources/Images/enemy2_1.png") };
             scoreValue = 100;
             projectileSpeed = 200;
@@ -194,17 +196,21 @@ namespace SpaceInvaders.Classes
     {
         public event Action Damaged;
         public Velocity velocity;
+        public int flags;
         public int shield = 0;
-        public const int maxShield = 5;
+        public int maxShield = 5;
         public float acceleration = 10f;
         public double fireCooldownRemaining = 0;
         public double fireInterval;
         public float projectileSpeed = 1000;
+
+        public double fastShootTimer = 0;
         public bool invincible;
         public Player(int flags) : base()
         {
             health = 3;
             maxHealth = 5;
+            this.flags = flags;
             speed = (flags & (int)Flags.SUPER_SPEED) > 0 ? 1600 : 400;
             invincible = (flags & (int)Flags.INVINCIBLE) > 0 ? true : false;
             fireInterval = (flags & (int)Flags.FAST_ATTACK) > 0 ? 0.01f : 0.7f;
@@ -220,7 +226,11 @@ namespace SpaceInvaders.Classes
         }
         public void Update(double dT)
         {
-            if(fireCooldownRemaining > 0) fireCooldownRemaining -= dT;
+            if (fastShootTimer > 0) fireInterval = 0.2f; 
+            else fireInterval = (flags & (int)Flags.FAST_ATTACK) > 0 ? 0.01f : 0.7f;
+
+            if (fireCooldownRemaining > 0) fireCooldownRemaining -= dT;
+            if (fastShootTimer > 0) fastShootTimer -= dT;
         }
         public void Move(double dT, HashSet<Key> keysDown, double width, double height)
         {
@@ -254,6 +264,25 @@ namespace SpaceInvaders.Classes
                 else health--;
                 if (health == 0) Die();
                 dmg--;
+            }
+        }
+        public void PickUp(Pickup pickup)
+        {
+            switch (pickup.type)
+            {
+                case PickUpType.FastShoot:
+                    fastShootTimer += 5;
+                    break;
+                case PickUpType.BonusPoints:
+                    break;
+                case PickUpType.BonusHealth:
+                    Heal();
+                    break;
+                case PickUpType.BonusShield:
+                    AddShield();
+                    break;
+                default:
+                    break;
             }
         }
         public void Heal()

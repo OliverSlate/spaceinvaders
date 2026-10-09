@@ -29,6 +29,13 @@ namespace SpaceInvaders.Classes
         Pickup,
         Shoot
     }
+    public enum PickUpType
+    {
+        FastShoot,
+        BonusPoints,
+        BonusHealth,
+        BonusShield
+    }
     public enum Direction
     {
         Up = -1,

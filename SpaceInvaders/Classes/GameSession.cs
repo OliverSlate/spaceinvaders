@@ -18,15 +18,21 @@ namespace SpaceInvaders.Classes
         private readonly Action<SFX> playSfx;
 
         private Player player;
+        private Random rnd = new();
         private double canvasWidth;
         private double canvasHeight;
 
         public int sessionScore = 0;
-        public float sessionMultiplier = 1.0f;
+        public double sessionMultiplier = 1.0f;
         public int highScore = 0;
         public int flags;
         public double animationTimer = 0f;
         public int animationFrame = 0;
+        public double gracePeriod = 1;
+        public double graceTimer = 1;
+        public double pickupTimer = 5;
+        public int bonusPoints = 1;
+        public double bonusPointsCounter = 0;
 
         public GameSession(
             GameStateManager stateManager,
@@ -40,6 +46,12 @@ namespace SpaceInvaders.Classes
 
             canvasRenderer = new CanvasRenderer(canvas);
             world.EnemyDied += OnEnemyDied;
+            world.EnemyReachedEnd += OnEnemyReachedEnd;
+            collisionSystem.PickedUp += (Pickup pickup) =>
+            {
+                playSfx(SFX.Pickup);
+                if (pickup.type == PickUpType.BonusPoints) bonusPointsCounter += 5;
+            };
         }
 
         public void Start(double width, double height, int flags)
@@ -82,14 +94,12 @@ namespace SpaceInvaders.Classes
 
         public void Update(double deltaTime, HashSet<Key> keysDown)
         {
-            if (stateManager.CurrentState != State.Wave &&
-                stateManager.CurrentState != State.BossWave)
-            {
-                return;
-            }
+            uiController.UpdateHealth(player);
 
-            if (player == null || !player.isAlive)
-                return;
+            if (stateManager.CurrentState != State.Wave &&
+                stateManager.CurrentState != State.BossWave) return;
+
+            if (player == null || !player.isAlive) return;
 
             player.Update(deltaTime);
             player.Move(deltaTime, keysDown, canvasWidth, canvasHeight);
@@ -107,10 +117,9 @@ namespace SpaceInvaders.Classes
 
             foreach (Enemy enemy in world.Enemies.ToList())
             {
-                if (!enemy.isAlive)
-                    continue;
-
-                enemy.Update(deltaTime, canvasWidth);
+                if (!enemy.isAlive) continue;
+                if (world.Enemies.Count < 5 && world.Enemies[0].GetType() != typeof(Boss)) enemy.speed = 250;
+                enemy.Update(deltaTime, canvasWidth, canvasHeight);
 
                 EnemyProjectile projectile = enemy.TryShoot();
 
@@ -122,6 +131,10 @@ namespace SpaceInvaders.Classes
             {
                 projectile.Update(deltaTime, canvasHeight);
             }
+
+            if (bonusPointsCounter > 0) bonusPoints = 2;
+            else bonusPoints = 1;
+            bonusPointsCounter = Math.Max(bonusPointsCounter - deltaTime, 0);
 
             collisionSystem.Resolve(world);
             world.RemoveInactiveEntities();
@@ -140,14 +153,36 @@ namespace SpaceInvaders.Classes
             }
 
             if (world.Enemies.Count == 0)
-                StartNextWave();
+            {
+                if(graceTimer > 0)
+                {
+                    graceTimer -= deltaTime;
+                }
+                else
+                {
+                    StartNextWave();
+                    graceTimer = gracePeriod;
+                    gracePeriod -= 0.02;
+                }
+            }
+
+            pickupTimer -= deltaTime;
+            if(pickupTimer <= 0)
+            {
+                if(rnd.NextDouble() > 0.7)
+                {
+                    Pickup pickup = new(canvasWidth, canvasHeight);
+                    world.AddPickup(pickup);
+                }
+                pickupTimer = 5;
+            } 
 
             canvasRenderer.Synchronize(world, animationFrame);
 
             uiController.UpdateHud(
                 waveManager.currentWave,
                 sessionScore,
-                sessionMultiplier,
+                sessionMultiplier * bonusPoints,
                 highScore,
                 player);
         }
@@ -172,9 +207,15 @@ namespace SpaceInvaders.Classes
             playSfx(SFX.Explosion);
         }
 
+        private void OnEnemyReachedEnd()
+        {
+            stateManager.SetState(State.Loss);
+            uiController.ShowState(stateManager.CurrentState);
+        }
+
         private void OnEnemyDied(Enemy enemy)
         {
-            sessionScore += (int)(enemy.scoreValue * sessionMultiplier);
+            sessionScore += (int)(enemy.scoreValue * sessionMultiplier * bonusPoints);
             sessionMultiplier += 0.02f;
 
             if (sessionScore > highScore)
