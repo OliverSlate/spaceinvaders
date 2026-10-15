@@ -15,7 +15,7 @@ namespace SpaceInvaders.Classes
     {
         public string Id;
         public PointF position;
-        public Dimensions dimensions = new Dimensions(51, 51);
+        public Dimensions dimensions = new(51, 51);
         public bool isAlive = true;
         public float speed;
         public ImageBrush[] skinFrames;
@@ -60,7 +60,8 @@ namespace SpaceInvaders.Classes
     internal abstract class Enemy : Damageable
     {
         public event Action ReachedEnd;
-        public static Random random = new Random();
+        protected void OnReachedEnd() => ReachedEnd?.Invoke();
+        public static Random random = new();
         public int scoreValue;
         public double fireCooldownRemaining;
         public double fireInterval;
@@ -69,9 +70,9 @@ namespace SpaceInvaders.Classes
         public bool movingDown = false;
         public float dropStartY;
         public Enemy() : base() => dropStartY = position.Y;
-        public void Update(double dT, double canvasWidth, double canvasHeight)
+        public virtual void Update(double dT, double canvasWidth, double canvasHeight)
         {
-            if (position.Y > canvasHeight - dimensions.height - 12) ReachedEnd?.Invoke();
+            if (position.Y > canvasHeight - dimensions.height - 12) OnReachedEnd();
             if (fireCooldownRemaining > 0) fireCooldownRemaining -= dT;
             if (movingDown)
             {
@@ -92,26 +93,25 @@ namespace SpaceInvaders.Classes
                 movingDown = true;
             }
         }
-        public abstract EnemyProjectile TryShoot();
+        public virtual List<EnemyProjectile> TryShoot()
+        {
+            if (fireCooldownRemaining > 0) return null;
+            fireCooldownRemaining = fireInterval;
+            PointF projectilePos = new(position.X + 25, position.Y + 51);
+            EnemyProjectile projectile = new(projectilePos, projectileSpeed);
+            return [projectile];
+        }
     }
     internal class Kimi : Enemy {
         //Weak enemy
         public Kimi() : base() {
             health = 1;
             speed = random.Next(60, 72);
-            skinFrames = new[] { LoadBrush("Resources/Images/enemy1_0.png"), LoadBrush("Resources/Images/enemy1_1.png") };
+            skinFrames = [LoadBrush("Resources/Images/enemy1_0.png"), LoadBrush("Resources/Images/enemy1_1.png")];
             scoreValue = 35;
             projectileSpeed = 300;
             fireInterval = 5;
             fireCooldownRemaining = random.NextDouble() * fireInterval;
-        }
-        public override EnemyProjectile TryShoot()
-        {
-            if (fireCooldownRemaining > 0) return null;
-            fireCooldownRemaining = fireInterval;
-            PointF projectilePos = new(position.X + 25, position.Y + 51);
-            EnemyProjectile projectile = new(projectilePos, projectileSpeed);
-            return projectile;
         }
     }
     internal class Enemy2 : Enemy {
@@ -120,19 +120,11 @@ namespace SpaceInvaders.Classes
         {
             health = 3;
             speed = random.Next(90, 108);
-            skinFrames = new[] { LoadBrush("Resources/Images/enemy2_0.png"), LoadBrush("Resources/Images/enemy2_1.png") };
+            skinFrames = [LoadBrush("Resources/Images/enemy2_0.png"), LoadBrush("Resources/Images/enemy2_1.png")];
             scoreValue = 100;
             projectileSpeed = 200;
             fireInterval = 4;
             fireCooldownRemaining = random.NextDouble() * fireInterval;
-        }
-        public override EnemyProjectile TryShoot()
-        {
-            if (fireCooldownRemaining > 0) return null;
-            fireCooldownRemaining = fireInterval;
-            PointF projectilePos = new(position.X + 25, position.Y + 51);
-            EnemyProjectile projectile = new(projectilePos, projectileSpeed);
-            return projectile;
         }
     }
     internal class Enemy3 : Enemy {
@@ -141,19 +133,11 @@ namespace SpaceInvaders.Classes
         {
             health = 1;
             speed = 50;
-            skinFrames = new[] { LoadBrush("Resources/Images/enemy3_0.png"), LoadBrush("Resources/Images/enemy3_1.png") };
+            skinFrames = [LoadBrush("Resources/Images/enemy3_0.png"), LoadBrush("Resources/Images/enemy3_1.png")];
             scoreValue = 150;
             projectileSpeed = 50;
             fireInterval = 8;
             fireCooldownRemaining = random.NextDouble() * fireInterval;
-        }
-        public override EnemyProjectile TryShoot()
-        {
-            if (fireCooldownRemaining > 0) return null;
-            fireCooldownRemaining = fireInterval;
-            PointF projectilePos = new(position.X + 25, position.Y + 51);
-            EnemyProjectile projectile = new(projectilePos, projectileSpeed);
-            return projectile;
         }
     }
     internal class Tank : Enemy
@@ -161,35 +145,56 @@ namespace SpaceInvaders.Classes
         //tank for special enemy
         public Tank() : base()
         {
-            health = 5;
+            health = 3;
             speed = 50;
-            skinFrames = new[] { LoadBrush("Resources/Images/player.png"), LoadBrush("Resources/Images/player.png") };
+            skinFrames = [LoadBrush("Resources/Images/player.png"), LoadBrush("Resources/Images/player.png")];
             scoreValue = 150;
             projectileSpeed = 0;
             fireInterval = 0;
             fireCooldownRemaining = 0;
         }
-        public override EnemyProjectile TryShoot() => null;
+        public override List<EnemyProjectile> TryShoot() => null;
     }
-    internal class Boss : Enemy { 
+    internal class Boss : Enemy {
+        public float sideFireInterval = 3;
+        public float sideFireCooldown = 3;
         public Boss() : base()
         {
             health = 40;
             speed = 100;
             dimensions = new(306, 306);
-            skinFrames = new[] { LoadBrush("Resources/Images/player.png") };
+            skinFrames = [LoadBrush("Resources/Images/player.png")];
             scoreValue = 5000;
             projectileSpeed = 600;
             fireInterval = Math.Max(random.NextDouble() * 1.5f, 0.35f);
             fireCooldownRemaining = fireInterval;
         }
-        public override EnemyProjectile TryShoot()
+        public override List<EnemyProjectile> TryShoot()
         {
-            if (fireCooldownRemaining > 0) return null;
-            fireCooldownRemaining = fireInterval;
-            PointF projectilePos = new((position.X + (position.X + dimensions.width)) / 2, position.Y + dimensions.height);
-            EnemyProjectile projectile = new(projectilePos, projectileSpeed);
-            return projectile;
+            List<EnemyProjectile> list = [];
+            if (fireCooldownRemaining < 0)
+            {
+                fireCooldownRemaining = fireInterval;
+                PointF projectilePos = new((position.X + (position.X + dimensions.width)) / 2, position.Y + dimensions.height);
+                EnemyProjectile projectile = new(projectilePos, projectileSpeed);
+                list.Add(projectile);
+            }
+            if (sideFireCooldown < 0)
+            {
+                sideFireCooldown = sideFireInterval;
+                PointF leftProjPos = new((position.X + (dimensions.width / 6)), position.Y + dimensions.height);
+                EnemyProjectile leftProj = new(leftProjPos, projectileSpeed - 50);
+                PointF rightProjPos = new((position.X + (dimensions.width * 0.833f)), position.Y + dimensions.height);
+                EnemyProjectile rightProj = new(rightProjPos, projectileSpeed - 50);
+                list.Add(leftProj);
+                list.Add(rightProj);
+            }  
+            return list.Count > 0 ? list : null;
+        }
+        public override void Update(double dT, double canvasWidth, double canvasHeight)
+        {
+            base.Update(dT, canvasWidth, canvasHeight);
+            sideFireCooldown -= (float)dT;
         }
     }
     internal class Player : Damageable
@@ -212,9 +217,9 @@ namespace SpaceInvaders.Classes
             maxHealth = 5;
             this.flags = flags;
             speed = (flags & (int)Flags.SUPER_SPEED) > 0 ? 1600 : 400;
-            invincible = (flags & (int)Flags.INVINCIBLE) > 0 ? true : false;
+            invincible = (flags & (int)Flags.INVINCIBLE) > 0;
             fireInterval = (flags & (int)Flags.FAST_ATTACK) > 0 ? 0.01f : 0.7f;
-            skinFrames = new[] { LoadBrush("Resources/Images/player.png") };
+            skinFrames = [LoadBrush("Resources/Images/player.png")];
         }
         public PlayerProjectile TryShoot()
         {
@@ -235,7 +240,7 @@ namespace SpaceInvaders.Classes
         public void Move(double dT, HashSet<Key> keysDown, double width, double height)
         {
             //get movement vector
-            Movement movement = new Movement();
+            Movement movement = new();
             if (keysDown.Contains(Key.W)) movement.y += (int)Direction.Up;
             if (keysDown.Contains(Key.S)) movement.y += (int)Direction.Down;
             if (keysDown.Contains(Key.A)) movement.x += (int)Direction.Left;

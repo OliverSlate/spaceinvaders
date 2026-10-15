@@ -126,10 +126,10 @@ namespace SpaceInvaders.Classes
                 if (world.Enemies.Count < 5 && world.Enemies[0].GetType() != typeof(Boss)) enemy.speed = 250;
                 enemy.Update(deltaTime, canvasWidth, canvasHeight);
 
-                EnemyProjectile projectile = enemy.TryShoot();
+                List<EnemyProjectile> projectiles = enemy.TryShoot();
 
-                if (projectile != null)
-                    world.AddProjectile(projectile);
+                if (projectiles != null)
+                    world.AddProjectiles(projectiles);
             }
 
             foreach (Projectile projectile in world.Projectiles.ToList())

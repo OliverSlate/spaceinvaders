@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Tutorial</title>
+</head>
+<body>
+        <h1>&lt; TUTORIAL &gt;</h1>
+        <h3>You!</h3>
+        <div class="card">
+            <img src="player.png" alt="" class="fl img1x1"/>
+            <p>
+                This is your ship.<br/>
+                You start with 3 health points,
+                with a maximum of 5 <br/>&lpar;increased with power-ups&rpar;<br/>
+                - Getting hit by an enemy projectile costs 1HP;<br/>
+                - Getting hit by a special projectile costs 3HP;<br/>
+                - Colliding with an enemy kills both of you;<br/>
+                You may pick up shields to mitigate damage.<br/>
+                Don't let your health go down to 0!<br/>
+            </p>
+        </div>
+        <h3>Controls</h3>
+            <div class="card center">
+                <p>Use the WSAD controls to move around</p>
+                <p>Press SPACE to shoot</p>
+            </div>
+        <h3>Power Ups</h3>
+        <div class="card center">
+            <img class="img1x1" src="pickup_heart_0.png" alt=""/>
+            <img class="img1x1" src="pickup_points_0.png" alt=""/>
+            <img class="img1x1" src="pickup_shield_0.png" alt=""/>
+            <img class="img1x1" src="pickup_shoot_0.png" alt=""/>
+        </div>
+        <div class="card">
+            <p>A power up might spawn every 5 seconds in the middle of the board.</p>
+            <ul>
+                <li>HP Pickup - restores 1 HP</li>
+                <li>Multiplier Pickup - doubles score for 5 seconds</li>
+                <li>Shield Pickup - gives 1 Shield</li>
+                <li>Bullet Pickup - quadruples attack speed for 5 seconds</li>
+            </ul>
+            <p>Touching a power up adds 5 seconds to the timer,<br/> ergo possibly infinite power ups.</p>
+        </div>
+        <h3>Enemies</h3>
+        <div class="card">
+            <div class="row">
+                <img src="enemy1_0.png" alt="" class="leftcol img1x1">
+                <p class="rightcol">
+                    Kimi - 1 HP<br/>
+                    Score value: 35<br/>
+                    Moderately fast attack<br/>
+                    moderate speed
+                </p>
+            </div>
+            <div class="row">
+                <img src="enemy2_0.png" alt="" class="leftcol img1x1">
+                <p class="rightcol">
+                    Stefan - 3 HP<br/>
+                    Score value: 100<br/>
+                    Fast attack<br/>
+                    High speed
+                </p>
+            </div>
+            <div class="row">
+                <img src="enemy3_0.png" alt="" class="leftcol img1x1">
+                <p class="rightcol">
+                    Cappy - 1 HP<br/>
+                    Score value: 150<br/>
+                    Slow attack<br/>
+                    Low speed
+                </p>
+            </div>
+            <div class="row">
+                <img src="enemy3_0.png" alt="" class="leftcol img1x1">
+                <p class="rightcol">
+                    Tank - 3 HP<br/>
+                    Score value: 150<br/>
+                    No attack<br/>
+                    Low Speed
+                </p>
+            </div>
+            <div class="row">
+                <img src="enemy3_0.png" alt="" class="leftcol img1x1">
+                <p class="rightcol">
+                    Boss - 40 HP<br/>
+                    Score value: 5000<br/>
+                    Random center attack, Slow side attacks<br/>
+                    Moderate speed
+                </p>
+            </div>
+            <p>
+                The last 4 enemies on the board get a speed boost.<br/>
+                If any enemy reaches the end you lose!</p>
+        </div>
+        <h3>score</h3>
+        <div class="card center">
+            <img src="score.png" alt="">
+            <p>Defeating an enemy increases the multiplier by 0.02;</p>
+            <p>Taking damage resets the multiplier.</p>
+        </div>
+        <h3>waves</h3>
+        <div class="card">
+            <p>There are 3 kinds of waves:</p>
+            <img src="wave.png" alt="" class="waveimg">
+            <p>Normal wave - 8-64 random enemies. Each enemy's speed slightly varies.</p>
+            <img src="swarm.png" alt="" class="waveimg">
+            <p>Swarm - A row of Cappy's and a row of Tanks. Occurs every 6th non-boss wave with a maximum of 32 enemies.</p>
+            <img src="swarm.png" alt="" class="waveimg">
+            <p>Boss - do i have to explain?</p>
+        </div>
+        <h3> debug options</h3>
+        <div class="card">
+            <p>You can also choose any of the following debug modifiers
+                to change your gameplay:
+            </p>
+            <ul>
+                <li>Force Boss Wave - every wave will have a boss.</li>
+                <li>Invincible - You can't die. Colliding with enemies has no effect.</li>
+                <li>Super Speed - move 4 times faster.</li>
+                <li>Fast Attack - You shoot a laser beam of bullets. &lpar;100 rps to be exact&rpar;</li>
+            </ul>
+        </div>
+        <footer>
+           <p> Space Invaders &copy; Oliwier Lang 2026</p>
+        </footer>
+</body>
+</html>

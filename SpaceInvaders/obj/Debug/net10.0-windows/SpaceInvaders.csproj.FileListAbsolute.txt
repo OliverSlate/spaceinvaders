@@ -128,3 +128,15 @@ C:\Users\olang\source\repos\spaceinvaders\SpaceInvaders\obj\Debug\net10.0-window
 C:\Users\olang\source\repos\spaceinvaders\SpaceInvaders\obj\Debug\net10.0-windows\SpaceInvaders.pdb
 C:\Users\olang\source\repos\spaceinvaders\SpaceInvaders\obj\Debug\net10.0-windows\SpaceInvaders.genruntimeconfig.cache
 C:\Users\olang\source\repos\spaceinvaders\SpaceInvaders\obj\Debug\net10.0-windows\ref\SpaceInvaders.dll
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\tutorial.html
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\style.css
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\Pixel Digivolve.otf
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\enemies.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\enemy1_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\enemy2_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\enemy3_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\pickup_heart_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\pickup_points_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\pickup_shield_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\pickup_shoot_0.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\player.png

@@ -76,7 +76,13 @@ namespace SpaceInvaders
         }
         private void InstrukcjaButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            string path = AppDomain.CurrentDomain.BaseDirectory + "/Resources/Tutorial/tutorial.html";
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo(path)
+            {
+                UseShellExecute = true
+            };
+            p.Start();
         }
         private void OptionsButton_Click(object sender, RoutedEventArgs e)
         {

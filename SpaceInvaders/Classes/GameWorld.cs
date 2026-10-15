@@ -33,7 +33,7 @@ namespace SpaceInvaders.Classes
         }
 
         public void AddProjectile(Projectile projectile) => Projectiles.Add(projectile);
-        
+        public void AddProjectiles(List<EnemyProjectile> projectiles) => Projectiles.AddRange(projectiles);
         public void AddPickup(Pickup pickup)
         {
             PickUps.Add(pickup);
