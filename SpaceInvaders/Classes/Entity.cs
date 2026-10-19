@@ -143,7 +143,7 @@ namespace SpaceInvaders.Classes
         {
             health = 3;
             speed = 50;
-            skinFrames = [LoadBrush("Resources/Images/player.png"), LoadBrush("Resources/Images/player.png")];
+            skinFrames = [LoadBrush("Resources/Images/enemy4_0.png"), LoadBrush("Resources/Images/enemy4_1.png")];
             scoreValue = 150;
             projectileSpeed = 0;
             fireInterval = 0;
@@ -159,7 +159,7 @@ namespace SpaceInvaders.Classes
             health = 40;
             speed = 100;
             dimensions = new(306, 306);
-            skinFrames = [LoadBrush("Resources/Images/player.png")];
+            skinFrames = [LoadBrush("Resources/Images/boss_0.png"), LoadBrush("Resources/Images/boss_1.png"), LoadBrush("Resources/Images/boss_2.png"), LoadBrush("Resources/Images/boss_3.png")];
             scoreValue = 5000;
             projectileSpeed = 600;
             fireInterval = Math.Max(random.NextDouble() * 1.5f, 0.35f);

@@ -50,6 +50,7 @@
     <None Remove="Resources\Images\shieldempty.png" />
     <None Remove="Resources\Images\shieldfull.png" />
     <None Remove="Resources\Images\specialattack.png" />
+    <None Remove="Resources\Tutorial\bosswave.png" />
     <None Remove="Resources\Tutorial\enemies.png" />
     <None Remove="Resources\Tutorial\enemy1_0.png" />
     <None Remove="Resources\Tutorial\enemy2_0.png" />
@@ -194,6 +195,14 @@
     </Content>
 
     <Content Include="Resources\Images\specialattack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Tutorial\bosswave.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Tutorial\boss_0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 
