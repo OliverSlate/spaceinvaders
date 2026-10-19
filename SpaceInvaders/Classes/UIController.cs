@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-//using System.Drawing;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -12,15 +9,15 @@ namespace SpaceInvaders.Classes
 {
     internal class UIController
     {
-        Grid _mainMenu;
-        Grid _gameMenu;
-        Grid _loseMenu;
-        Canvas _healthCanvas;
-        Canvas _powerupCanvas;
-        TextBlock _wave;
-        TextBlock _score;
-        TextBlock _mult;
-        TextBlock _hi;
+        readonly Grid _mainMenu;
+        readonly Grid _gameMenu;
+        readonly Grid _loseMenu;
+        readonly Canvas _healthCanvas;
+        readonly Canvas _powerupCanvas;
+        readonly TextBlock _wave;
+        readonly TextBlock _score;
+        readonly TextBlock _mult;
+        readonly TextBlock _hi;
         public UIController(Grid mainMenu, Grid gameMenu, Grid loseMenu, Canvas healthCanvas, Canvas powerupCanvas, ref TextBlock wave, ref TextBlock score, ref TextBlock mult, ref TextBlock hi) {
             _mainMenu = mainMenu;
             _gameMenu = gameMenu;
@@ -79,7 +76,7 @@ namespace SpaceInvaders.Classes
             if (player == null) return;
             for (int i = 0; i < player.shield; i++)
             {
-                Rectangle rect = new Rectangle()
+                Rectangle rect = new()
                 {
                     Tag = "shield",
                     Width = 51,
@@ -93,7 +90,7 @@ namespace SpaceInvaders.Classes
             for (int i = 0; i < player.maxHealth; i++)
             {
                 string source = i + 1 > player.health ? "Resources/Images/heartempty.png" : "Resources/Images/heartfull.png";
-                Rectangle rect = new Rectangle()
+                Rectangle rect = new()
                 {
                     Tag = "hp",
                     Width = 51,
@@ -110,7 +107,7 @@ namespace SpaceInvaders.Classes
             _powerupCanvas.Children.Clear();
             if (player.fastShootTimer > 0)
             {
-                Rectangle rect = new Rectangle()
+                Rectangle rect = new()
                 {
                     Tag = "fastShoot",
                     Width = 51,
@@ -119,7 +116,7 @@ namespace SpaceInvaders.Classes
                 };
                 Canvas.SetTop(rect, 12);
                 Canvas.SetLeft(rect, 12);
-                TextBlock text = new TextBlock()
+                TextBlock text = new()
                 {
                     Tag = "fastShoot",
                     FontSize = 36,
@@ -133,7 +130,7 @@ namespace SpaceInvaders.Classes
             }
             if (bonusPointsCounter > 0)
             {
-                Rectangle rect = new Rectangle()
+                Rectangle rect = new()
                 {
                     Tag = "bonusPoints",
                     Width = 51,
@@ -142,7 +139,7 @@ namespace SpaceInvaders.Classes
                 };
                 Canvas.SetTop(rect, 12 + 51);
                 Canvas.SetLeft(rect, 12);
-                TextBlock text = new TextBlock()
+                TextBlock text = new()
                 {
                     Tag = "bonusPoints",
                     FontSize = 36,

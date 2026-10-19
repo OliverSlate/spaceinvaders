@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SpaceInvaders.Classes
 {
@@ -8,7 +7,7 @@ namespace SpaceInvaders.Classes
     {
         Normal, Swarm, Boss
     }
-    internal class WaveManager
+    internal class WaveManager(int flags)
     {
         public WaveKind CurrentWaveKind;
         public int currentWave = 0;
@@ -16,12 +15,9 @@ namespace SpaceInvaders.Classes
         private const int SwarmInterval = 6;
         private const float enemy2chance = 0.35f;
         private const float enemy3chance = 0.20f;
-        private bool ForceBossWave = false;
-        private Random random = new Random();
-        public WaveManager(int flags)
-        {
-            ForceBossWave = (flags & (int)Flags.FORCE_BOSS) > 0;
-        }
+        private readonly bool ForceBossWave = (flags & (int)Flags.FORCE_BOSS) > 0;
+        private readonly Random random = new();
+
         public void Reset()
         {
             currentWave = 0;
@@ -31,7 +27,7 @@ namespace SpaceInvaders.Classes
         public List<Enemy> CreateNextWave(double canvasWidth)
         {
             currentWave++;
-            List<Enemy> list = new();
+            List<Enemy> list = [];
             int capacity = GetEnemyCount();
             CurrentWaveKind = DetermineWaveKind(currentWave);
             switch (CurrentWaveKind)
@@ -72,7 +68,7 @@ namespace SpaceInvaders.Classes
                         list.Add(enemy);
                     }
                     PositionEnemies(list, canvasWidth);
-                    List<Enemy> tanks = new List<Enemy>();
+                    List<Enemy> tanks = [];
                     for (int i = 0; i < capacity / 2; i++)
                     {
                         Tank enemy = new();
@@ -95,7 +91,7 @@ namespace SpaceInvaders.Classes
             
             return list;
         }
-        public void PositionEnemies(List<Enemy> enemies, double canvasWidth, int additionalRow = 0)
+        public static void PositionEnemies(List<Enemy> enemies, double canvasWidth, int additionalRow = 0)
         {
             const float padding = 25;
             const float spacingX = 12;
@@ -121,9 +117,9 @@ namespace SpaceInvaders.Classes
         public int GetEnemyCount()
         {
             float t = 1f - MathF.Exp(-0.15f * (currentWave - 1));
-            int count = (int)MathF.Round(8 + (48 - 8) * t);
+            int count = (int)MathF.Round(8 + (32 - 8) * t);
 
-            return Math.Clamp(count, 8, 32);
+            return Math.Clamp(count, 8, 64);
         }
     }
 }

@@ -140,3 +140,6 @@ C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-window
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\pickup_shield_0.png
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\pickup_shoot_0.png
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\player.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\score.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\swarm.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\wave.png

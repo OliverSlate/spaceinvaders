@@ -1,19 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 using System.Diagnostics;
 using SpaceInvaders.Classes;
 
@@ -30,12 +20,12 @@ namespace SpaceInvaders
             {SFX.Hover, "Resources/Audio/hover.wav" },
             {SFX.Click, "Resources/Audio/click.wav" }
         };
-        public HashSet<Key> keysDown = new();
+        public HashSet<Key> keysDown = [];
         private TimeSpan lastRender = TimeSpan.Zero;
-        private GameStateManager gameState = new();
-        private AudioEngine audio = new();
-        private SoundHandler soundHandler;
-        private UIController uiController;
+        private readonly GameStateManager gameState = new();
+        private readonly AudioEngine audio = new();
+        private readonly SoundHandler soundHandler;
+        private readonly UIController uiController;
         private GameSession gameSession;
         public int flags = 0;
 
@@ -58,7 +48,7 @@ namespace SpaceInvaders
 
             CompositionTarget.Rendering += GameLoop;
         }
-        private int ReadHighScore()
+        private static int ReadHighScore()
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "highscore.txt";
             if (File.Exists(path))
@@ -76,11 +66,14 @@ namespace SpaceInvaders
         }
         private void InstrukcjaButton_Click(object sender, RoutedEventArgs e)
         {
+            audio.PlaySfx(sfx[SFX.Click]);
             string path = AppDomain.CurrentDomain.BaseDirectory + "/Resources/Tutorial/tutorial.html";
-            var p = new Process();
-            p.StartInfo = new ProcessStartInfo(path)
+            var p = new Process
             {
-                UseShellExecute = true
+                StartInfo = new ProcessStartInfo(path)
+                {
+                    UseShellExecute = true
+                }
             };
             p.Start();
         }
@@ -90,7 +83,11 @@ namespace SpaceInvaders
             OptionsGrid.Visibility = OptionsGrid.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
         }
         private void QuitButton_Click(object sender, RoutedEventArgs e) => this.Close();
-        private void MenuButton_Click(object sender, RoutedEventArgs e) => uiController.ShowState(State.Menu);
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            uiController.ShowState(State.Menu);
+            gameState.SetState(State.Menu);
+        }
         private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
             GameCanvas.Children.Clear();

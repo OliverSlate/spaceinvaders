@@ -17,12 +17,10 @@ namespace SpaceInvaders.Classes
         private readonly CanvasRenderer canvasRenderer;
         private readonly UIController uiController;
         private readonly Action<SFX> playSfx;
-
         private Player player;
-        private Random rnd = new();
+        private readonly Random rnd = new();
         private double canvasWidth;
         private double canvasHeight;
-
         public int sessionScore = 0;
         public double sessionMultiplier = 1.0f;
         public int highScore = 0;
@@ -52,7 +50,7 @@ namespace SpaceInvaders.Classes
             canvasRenderer = new CanvasRenderer(canvas);
             world.EnemyDied += OnEnemyDied;
             world.EnemyReachedEnd += OnEnemyReachedEnd;
-            collisionSystem.PickedUp += (Pickup pickup) =>
+            collisionSystem.PickedUp += pickup =>
             {
                 playSfx(SFX.Pickup);
                 if (pickup.type == PickUpType.BonusPoints) bonusPointsCounter += 5;

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SpaceInvaders.Classes
 {
@@ -8,7 +6,7 @@ namespace SpaceInvaders.Classes
     {
         public PickUpType type;
         public event Action<Pickup> PickedUp;
-        private Random random = new();
+        private readonly Random random = new();
         public Pickup(double canvasWidth, double canvasHeight)
         {
             double verticalMargin = canvasHeight / 4;
@@ -19,37 +17,37 @@ namespace SpaceInvaders.Classes
             {
                 case 1:
                     type = PickUpType.FastShoot;
-                    skinFrames = new[] 
-                    { 
+                    skinFrames =
+                    [
                         LoadBrush("Resources/Images/pickup_shoot_0.png"),
                         LoadBrush("Resources/Images/pickup_shoot_1.png"),
                         LoadBrush("Resources/Images/pickup_shoot_2.png"),
                         LoadBrush("Resources/Images/pickup_shoot_3.png")
-                    };
+                    ];
                     break;
                 case 2:
                     type = PickUpType.BonusPoints;
-                    skinFrames = new[]
-                  {
+                    skinFrames =
+                    [
                         LoadBrush("Resources/Images/pickup_points_0.png"),
                         LoadBrush("Resources/Images/pickup_points_1.png")
-                   };
+                    ];
                     break;
                 case 3:
                     type = PickUpType.BonusHealth;
-                    skinFrames = new[]
-                   {
+                    skinFrames =
+                    [
                         LoadBrush("Resources/Images/pickup_heart_0.png"),
                         LoadBrush("Resources/Images/pickup_heart_1.png")
-                   };
+                    ];
                     break;
                 case 4:
                     type = PickUpType.BonusShield;
-                    skinFrames = new[]
-                  {
+                    skinFrames =
+                    [
                         LoadBrush("Resources/Images/pickup_shield_0.png"),
                         LoadBrush("Resources/Images/pickup_shield_1.png")
-                   };
+                    ];
                     break;
                 default:
                     break;

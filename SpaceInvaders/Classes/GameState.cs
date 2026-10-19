@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SpaceInvaders.Classes
+﻿namespace SpaceInvaders.Classes
 {
     public enum Flags {
         FORCE_BOSS = 0x00000001,
@@ -48,13 +42,9 @@ namespace SpaceInvaders.Classes
         Player,
         Enemy
     }
-    public struct Position
+    public struct Position(double x, double y)
     {
-        public double x, y;
-        public Position(double x, double y)
-        {
-            this.x = x; this.y = y;
-        }
+        public double x = x, y = y;
     }
     public struct Movement
     {
@@ -64,13 +54,8 @@ namespace SpaceInvaders.Classes
     {
         public double x, y;
     }
-    public struct Dimensions
+    public struct Dimensions(float width, float height)
     {
-        public float width, height;
-        public Dimensions(float width, float height)
-        {
-            this.width = width;
-            this.height = height;
-        }
+        public float width = width, height = height;
     }
 }
