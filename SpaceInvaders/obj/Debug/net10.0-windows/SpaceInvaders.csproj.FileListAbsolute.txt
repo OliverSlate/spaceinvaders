@@ -151,3 +151,15 @@ C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-window
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\boss_3.png
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\boss_0.png
 C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Tutorial\bosswave.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\background.jpg
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_00.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_01.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_02.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_03.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_04.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_05.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_06.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_07.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_08.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_09.png
+C:\Users\oliwi\source\repos\SpaceInvaders\SpaceInvaders\bin\Debug\net10.0-windows\Resources\Images\explosion_10.png

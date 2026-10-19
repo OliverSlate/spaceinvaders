@@ -99,8 +99,15 @@ namespace SpaceInvaders.Classes
         {
             uiController.UpdateHealth(player);
 
+            world.UpdateExplosions(deltaTime);
+            world.RemoveInactiveEntities();
+
             if (stateManager.CurrentState != State.Wave &&
-                stateManager.CurrentState != State.BossWave) return;
+                stateManager.CurrentState != State.BossWave)
+            {
+                canvasRenderer.Synchronize(world, animationFrame);
+                return;
+            }
 
             if (player == null || !player.isAlive) return;
 
@@ -206,12 +213,14 @@ namespace SpaceInvaders.Classes
 
         private void OnPlayerDied(Damageable damageable)
         {
+            SpawnExplosion(damageable);
             EndGame();
             playSfx(SFX.Explosion);
         }
         private void OnEnemyReachedEnd() => EndGame();
         private void OnEnemyDied(Enemy enemy)
         {
+            SpawnExplosion(enemy);
             sessionScore += (int)(enemy.scoreValue * sessionMultiplier * bonusPoints);
             sessionMultiplier += 0.02f;
 
@@ -219,6 +228,11 @@ namespace SpaceInvaders.Classes
                 highScore = sessionScore;
 
             playSfx(SFX.Explosion);
+        }
+
+        private void SpawnExplosion(Damageable damageable)
+        {
+            world.AddExplosion(new Explosion(damageable));
         }
         private void EndGame()
         {

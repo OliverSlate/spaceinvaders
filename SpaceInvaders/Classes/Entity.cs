@@ -19,7 +19,6 @@ namespace SpaceInvaders.Classes
         {
             Id = Guid.NewGuid().ToString();
         }
-
         public RectangleF GetBounds()
         {
             PointF origin = new(position.X, position.Y);
@@ -31,6 +30,10 @@ namespace SpaceInvaders.Classes
             var brush = new ImageBrush(new BitmapImage(new Uri(path, UriKind.Relative)));
             brush.Freeze();
             return brush;
+        }
+        public virtual int GetAnimationFrame(int sharedAnimationFrame)
+        {
+            return sharedAnimationFrame % skinFrames.Length;
         }
     }
     internal abstract class Damageable : Entity

@@ -20,6 +20,7 @@
     <None Remove="Resources\Audio\click.wav" />
     <None Remove="Resources\Audio\game.wav" />
     <None Remove="Resources\Audio\mainmenu.wav" />
+    <None Remove="Resources\Images\background.jpg" />
     <None Remove="Resources\Images\boss_0.png" />
     <None Remove="Resources\Images\boss_1.png" />
     <None Remove="Resources\Images\boss_2.png" />
@@ -33,6 +34,7 @@
     <None Remove="Resources\Images\enemy4_0.png" />
     <None Remove="Resources\Images\enemy4_1.png" />
     <None Remove="Resources\Images\enemyprojectile.png" />
+    <None Remove="Resources\Images\explosion_*.png" />
     <None Remove="Resources\Images\heartempty.png" />
     <None Remove="Resources\Images\heartfull.png" />
     <None Remove="Resources\Images\pickup_heart_0.png" />
@@ -83,6 +85,10 @@
     </Content>
 
     <Content Include="Resources\Audio\game.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 
@@ -269,6 +275,10 @@
     </Content>
 
     <Content Include="Resources\Images\enemyprojectile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Images\explosion_*.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 

@@ -7,17 +7,19 @@ namespace SpaceInvaders.Classes
     {
         public event Action<Enemy> EnemyDied;
         public event Action EnemyReachedEnd;
-
         public Player player;
         public List<Enemy> Enemies = [];
         public List<Projectile> Projectiles = [];
         public List<Pickup> PickUps = [];
+        public List<Explosion> Explosions = [];
 
         public void Reset()
         {
             player = null;
             Enemies.Clear();
             Projectiles.Clear();
+            PickUps.Clear();
+            Explosions.Clear();
         }
 
         public void SetPlayer(Player player)
@@ -39,10 +41,23 @@ namespace SpaceInvaders.Classes
             PickUps.Add(pickup);
         }
 
+        public void AddExplosion(Explosion explosion)
+        {
+            Explosions.Add(explosion);
+        }
+
+        public void UpdateExplosions(double deltaTime)
+        {
+            foreach (Explosion explosion in Explosions)
+                explosion.Update(deltaTime);
+        }
+
         public void RemoveInactiveEntities()
         {
             Enemies.RemoveAll(enemy => !enemy.isAlive);
             Projectiles.RemoveAll(projectile => !projectile.isAlive);
+            PickUps.RemoveAll(pickup => !pickup.isAlive);
+            Explosions.RemoveAll(explosion => !explosion.isAlive);
         }
 
         public IEnumerable<Entity> GetLiveEntities()
@@ -66,6 +81,12 @@ namespace SpaceInvaders.Classes
             {
                 if (pickup.isAlive)
                     yield return pickup;
+            }
+
+            foreach (Explosion explosion in Explosions)
+            {
+                if (explosion.isAlive)
+                    yield return explosion;
             }
         }
 

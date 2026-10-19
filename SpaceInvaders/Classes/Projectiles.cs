@@ -27,7 +27,7 @@ namespace SpaceInvaders.Classes
             this.position = position;
             this.speed = speed;
             this.direction = Direction.Up;
-            skinFrames = new[] { LoadBrush("Resources/Images/playerprojectile.png") };
+            skinFrames = [LoadBrush("Resources/Images/playerprojectile.png")];
             damage = 1;
             faction = Faction.Player;
             dimensions = new Dimensions(9, 20);
@@ -40,7 +40,7 @@ namespace SpaceInvaders.Classes
             this.position = position;
             this.speed = speed;
             this.direction = Direction.Down;
-            skinFrames = new[] { LoadBrush("Resources/Images/enemyprojectile.png") };
+            skinFrames = [LoadBrush("Resources/Images/enemyprojectile.png")];
             damage = 1;
             faction = Faction.Enemy;
             dimensions = new Dimensions(9, 20);
@@ -48,12 +48,13 @@ namespace SpaceInvaders.Classes
     }
     internal class SpecialProjectile : Projectile
     {
+        public double lifetime = 4;
         public SpecialProjectile(PointF position) : base()
         {
             this.position = position;
             this.speed = 0;
             this.direction = Direction.Down;
-            skinFrames = new[] { LoadBrush("Resources/Images/specialattack.png") };
+            skinFrames = [LoadBrush("Resources/Images/specialattack.png")];
             damage = 3;
             faction = Faction.Enemy;
         }

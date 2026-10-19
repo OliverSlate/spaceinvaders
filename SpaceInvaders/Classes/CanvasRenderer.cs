@@ -29,7 +29,7 @@ namespace SpaceInvaders.Classes
 
                 Canvas.SetLeft(rectangle, entity.position.X);
                 Canvas.SetTop(rectangle, entity.position.Y);
-                ImageBrush frame = entity.skinFrames[animationFrame % entity.skinFrames.Length];
+                ImageBrush frame = entity.skinFrames[entity.GetAnimationFrame(animationFrame)];
                 if (!ReferenceEquals(rectangle.Fill, frame))
                     rectangle.Fill = frame;
             }
