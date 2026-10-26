@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\pickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\pickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\gameworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\gameworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\explosion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\explosion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,20 +27,8 @@
       "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\projectiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\gameworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\gameworld.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\gamesession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\gamesession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\uicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\uicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\pickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|solutionrelative:spaceinvaders\\classes\\pickup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{51F2BC67-1BC0-4097-861A-88B4E4D3E31C}|SpaceInvaders\\SpaceInvaders.csproj|c:\\users\\oliwi\\source\\repos\\spaceinvaders\\spaceinvaders\\classes\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,21 +58,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 295,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Explosion.cs",
-              "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Explosion.cs",
-              "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\Explosion.cs",
-              "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Explosion.cs",
-              "RelativeToolTip": "SpaceInvaders\\Classes\\Explosion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAABYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-19T18:19:48.192Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
@@ -80,19 +67,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Projectiles.cs",
-              "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Projectiles.cs",
-              "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\Projectiles.cs",
-              "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Projectiles.cs",
-              "RelativeToolTip": "SpaceInvaders\\Classes\\Projectiles.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-19T09:57:12.448Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -108,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "SpaceInvaders\\MainWindow.xaml.cs",
@@ -120,20 +94,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Entity.cs",
               "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\Entity.cs",
               "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Entity.cs",
               "RelativeToolTip": "SpaceInvaders\\Classes\\Entity.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAA1wBQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAUwBQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-08T16:12:41.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-08T16:12:41.723Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\MainWindow.xaml",
               "RelativeDocumentMoniker": "SpaceInvaders\\MainWindow.xaml",
@@ -145,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "WaveManager.cs",
               "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\WaveManager.cs",
               "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\WaveManager.cs",
@@ -157,7 +130,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "Pickup.cs",
+              "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Pickup.cs",
+              "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\Pickup.cs",
+              "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Pickup.cs",
+              "RelativeToolTip": "SpaceInvaders\\Classes\\Pickup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-08T15:53:33.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Projectiles.cs",
+              "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Projectiles.cs",
+              "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\Projectiles.cs",
+              "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Projectiles.cs",
+              "RelativeToolTip": "SpaceInvaders\\Classes\\Projectiles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T09:57:12.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "GameSession.cs",
               "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\GameSession.cs",
               "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\GameSession.cs",
@@ -165,12 +163,11 @@
               "RelativeToolTip": "SpaceInvaders\\Classes\\GameSession.cs",
               "ViewState": "AgIAAFsAAAAAAAAAAAAzwGQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-06T17:37:09.585Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-06T17:37:09.585Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UIController.cs",
               "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\UIController.cs",
               "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\UIController.cs",
@@ -188,22 +185,21 @@
               "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\GameWorld.cs",
               "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\GameWorld.cs",
               "RelativeToolTip": "SpaceInvaders\\Classes\\GameWorld.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAywAgAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-08T15:53:06.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-08T15:53:06.44Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Pickup.cs",
-              "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Pickup.cs",
-              "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\Pickup.cs",
-              "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Pickup.cs",
-              "RelativeToolTip": "SpaceInvaders\\Classes\\Pickup.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAYwDEAAAAUAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Explosion.cs",
+              "DocumentMoniker": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Explosion.cs",
+              "RelativeDocumentMoniker": "SpaceInvaders\\Classes\\Explosion.cs",
+              "ToolTip": "C:\\Users\\oliwi\\source\\repos\\SpaceInvaders\\SpaceInvaders\\Classes\\Explosion.cs",
+              "RelativeToolTip": "SpaceInvaders\\Classes\\Explosion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-08T15:53:33.592Z"
+              "WhenOpened": "2026-10-19T18:19:48.192Z"
             },
             {
               "$type": "Document",

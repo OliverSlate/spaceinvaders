@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using SpaceInvaders.Classes;
 
@@ -29,9 +30,15 @@ namespace SpaceInvaders
         private GameSession gameSession;
         public int flags = 0;
 
+        private const double BackgroundScrollSpeed = 80.0;
+        private double backgroundTileWidth;
+        private double backgroundTileHeight;
+        private double backgroundOffsetY;
+
         public MainWindow()
         {
             InitializeComponent(); 
+            ConfigureScrollingBackground();
             soundHandler = new SoundHandler(gameState, audio);
             uiController = new(MenuGrid, GameGrid, LoseGrid, HealthCanvas, PowerUpCanvas, ref WaveText, ref ScoreText, ref MultiplierText, ref HighScoreText);
             int highscore = ReadHighScore();
@@ -110,6 +117,7 @@ namespace SpaceInvaders
             gameSession.Start(GameCanvas.ActualWidth, GameCanvas.ActualHeight, flags);
             //Game loop setup
             lastRender = TimeSpan.Zero;
+            backgroundOffsetY = 0;
         }
         private void GameLoop(object sender, EventArgs e) 
         {
@@ -119,7 +127,48 @@ namespace SpaceInvaders
             double deltaTime = lastRender == TimeSpan.Zero ? 0 : (args.RenderingTime - lastRender).TotalSeconds;
             lastRender = args.RenderingTime;
             deltaTime = Math.Min(deltaTime, 0.05); //get a minimum for the same reason basically
+
+            if (GameGrid.Visibility == Visibility.Visible)
+                ScrollBackground(deltaTime);
+
             gameSession.Update(deltaTime, keysDown);
+        }
+
+        private void ConfigureScrollingBackground()
+        {
+            if (GameBackgroundBrush.ImageSource is not BitmapSource image)
+                return;
+
+            backgroundTileWidth = image.Width;
+            backgroundTileHeight = image.Height;
+
+            GameBackgroundBrush.Viewbox = new Rect(
+                0,
+                0,
+                backgroundTileWidth,
+                backgroundTileHeight);
+
+            GameBackgroundBrush.Viewport = new Rect(
+                0,
+                0,
+                backgroundTileWidth,
+                backgroundTileHeight);
+        }
+
+        private void ScrollBackground(double deltaTime)
+        {
+            if (backgroundTileHeight <= 0)
+                return;
+
+            backgroundOffsetY =
+                (backgroundOffsetY + BackgroundScrollSpeed * deltaTime)
+                % backgroundTileHeight;
+
+            GameBackgroundBrush.Viewport = new Rect(
+                0,
+                backgroundOffsetY,
+                backgroundTileWidth,
+                backgroundTileHeight);
         }
         private void OnKeyDown(object sender, KeyEventArgs e) => keysDown.Add(e.Key);
         private void OnKeyUp(object sender, KeyEventArgs e) => keysDown.Remove(e.Key);
