@@ -19,6 +19,7 @@
   <ItemGroup>
     <None Remove="Resources\Audio\click.wav" />
     <None Remove="Resources\Audio\game.wav" />
+    <None Remove="Resources\Audio\loss.wav" />
     <None Remove="Resources\Audio\mainmenu.wav" />
     <None Remove="Resources\Images\background.jpg" />
     <None Remove="Resources\Images\boss_0.png" />
@@ -58,6 +59,7 @@
     <None Remove="Resources\Tutorial\enemy1_0.png" />
     <None Remove="Resources\Tutorial\enemy2_0.png" />
     <None Remove="Resources\Tutorial\enemy3_0.png" />
+    <None Remove="Resources\Tutorial\enemy4_0.png" />
     <None Remove="Resources\Tutorial\player.png" />
     <None Remove="Resources\Tutorial\score.png" />
     <None Remove="Resources\Tutorial\style.css" />
@@ -86,6 +88,10 @@
     </Content>
 
     <Content Include="Resources\Audio\game.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Audio\loss.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 
@@ -230,6 +236,10 @@
     </Content>
 
     <Content Include="Resources\Tutorial\enemy3_0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Content Include="Resources\Tutorial\enemy4_0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 

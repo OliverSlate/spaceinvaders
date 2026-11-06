@@ -10,9 +10,7 @@
     {
         Menu,
         Wave,
-        BossAlert,
         BossWave,
-        Win,
         Loss
     }
     public enum SFX

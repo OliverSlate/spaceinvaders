@@ -43,11 +43,7 @@ namespace SpaceInvaders.Classes
                     _gameMenu.Visibility = Visibility.Visible;
                     _loseMenu.Visibility= Visibility.Hidden;
                     break;
-                case State.BossAlert:
-                    break;
                 case State.BossWave:
-                    break;
-                case State.Win:
                     break;
                 case State.Loss:
                     _loseMenu.Visibility = Visibility.Visible;

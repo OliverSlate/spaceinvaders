@@ -10,6 +10,7 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/click.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/game.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/loss.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/background.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/boss_0.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/boss_1.png")]
@@ -46,6 +47,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/tutorial/enemy1_0.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/tutorial/enemy2_0.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/tutorial/enemy3_0.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/tutorial/enemy4_0.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/tutorial/pickup_heart_0.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/tutorial/pickup_points_0.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/tutorial/pickup_shield_0.png")]

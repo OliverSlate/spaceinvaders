@@ -10,6 +10,7 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/click.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/game.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/audio/loss.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/background.jpg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/boss_0.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/boss_1.png")]
